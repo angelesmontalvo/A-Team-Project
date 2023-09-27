@@ -5,4 +5,6 @@ Functions include:
   - Place an order
   - Choose from different shipping methods
   - Pay an item using a credit card
-  - Confirmation email sent to user's email address
+  - Confirmation email sent to user's email address 
+
+Hi guys!
