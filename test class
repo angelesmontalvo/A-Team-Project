@@ -1,0 +1,53 @@
+import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
+
+public class ECommerceSiteTest {
+
+    private ECommerceSite ecommerceSite;
+
+    @Before
+    public void setUp() {
+        ecommerceSite = new ECommerceSite();
+        ecommerceSite.addItemToInventory("Item1", 10.0);
+        ecommerceSite.addItemToInventory("Item2", 20.0);
+        ecommerceSite.registerUser("user1@example.com");
+    }
+
+    @Test
+    public void testSearchItem() {
+        assertTrue(ecommerceSite.searchItem("Item1"));
+        assertFalse(ecommerceSite.searchItem("NonExistentItem"));
+    }
+
+    @Test
+    public void testOrderItem() {
+        assertTrue(ecommerceSite.orderItem("user1@example.com", "Item1"));
+        assertTrue(ecommerceSite.orderItem("user1@example.com", "Item2"));
+        assertFalse(ecommerceSite.orderItem("user1@example.com", "NonExistentItem"));
+    }
+
+    @Test
+    public void testPayForItems() {
+        ecommerceSite.orderItem("user1@example.com", "Item1");
+        ecommerceSite.orderItem("user1@example.com", "Item2");
+        assertTrue(ecommerceSite.payForItems("user1@example.com", "1234-5678-9012-3456"));
+        assertFalse(ecommerceSite.payForItems("user1@example.com", "InvalidCreditCard"));
+    }
+
+    @Test
+    public void testSendConfirmationEmail() {
+        ecommerceSite.orderItem("user1@example.com", "Item1");
+        ecommerceSite.orderItem("user1@example.com", "Item2");
+        ecommerceSite.payForItems("user1@example.com", "1234-5678-9012-3456");
+
+        // Capture the output for testing
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        ecommerceSite.sendConfirmationEmail("user1@example.com");
+
+        String expectedOutput = "Confirmation email sent to: user1@example.com\n";
+        assertEquals(expectedOutput, outContent.toString());
+    }
+}
