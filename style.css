@@ -214,11 +214,6 @@ ul {
     text-align: center;
 }
 
-.menui {
-    width: 28px;
-    margin-left: 20px;
-}
-
 /*Used so when screen size is smaller it shows one product at a time*/
 @media only screen and (max-width: 600px) {
     .row {
