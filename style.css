@@ -7,7 +7,7 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-/* Design of navigation bar on top of website */
+/*-----------Design of navigation bar on top of website-----------*/
 .navbar {
     display: flex;
     align-items: center;
@@ -100,7 +100,7 @@ p {
     background: radial-gradient(#fff, #ede4cd);
 }
 
-/*Categories for products*/
+/*-----------Categories for products-----------*/
 .categories {
     margin: 70px 0;
 }
@@ -124,8 +124,11 @@ p {
     padding: 10px;
     min-width: 250px;
     margin-bottom: 30px;
-    text-align: center;
     transition: transform 0.5s;
+}
+
+.col3 h4, .col3 p {
+    text-align: center;
 }
 
 .col3 img {
@@ -165,7 +168,7 @@ h4 {
     transform: translateY(-8px);
 }
 
-/*Footer*/
+/*-----------Footer-----------*/
 .footer {
     background: #ede4cd;
     color: #767575;
@@ -176,6 +179,7 @@ h4 {
 .footer h3 {
     color: #6f6e6e;
     margin-bottom: 10px;
+    font-size: 16px;
 }
 
 .footer_column1, .footer_column2, .footer_column3 {
@@ -198,6 +202,10 @@ ul {
     text-align: center;
 }
 
+.footer_column2 p {
+    margin-bottom: 20px;
+}
+
 .footer_column2 img {
     width: 200px;
     margin-bottom: 10px;
@@ -214,7 +222,7 @@ ul {
     text-align: center;
 }
 
-/*Products page*/
+/*-----------Products page-----------*/
 
 .col4 {
     flex-basis: 25%;
@@ -271,13 +279,114 @@ select:focus {
     color: #fff;
 }
 
+/*-----------Single Product Details Page-----------*/
+.col2 {
+    flex-basis: 50%;
+    min-width: 300px;
+}
+
+.col2 img {
+    max-width: 100%;
+    padding: 50px 0;
+}
+
+.col2 h1 {
+    font-size: 40px;
+    line-height: 60px;
+    margin: 25px 0;
+}
+
+.single_product {
+    margin-top: 30px;
+} 
+
+.single_product .col2 img {
+    padding: 0;
+}
+
+.single_product .col2 {
+    padding: 20px;
+}
+
+.single_product h4 {
+    margin: 20px 0;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.single_product select {
+    display: block;
+    padding: 10px;
+    margin-top: 20px;
+    height: 40px;
+    width: auto;
+    font-size: 15px;
+}
+
+.single_product input {
+    width: 50px;
+    height: 40px;
+    padding-left: 10px;
+    font-size: 18px;
+    margin-right: 10px;
+    border: 1px solid #b39200;
+    margin-bottom: 40px;
+}
+
+.single_product h3 {
+    font-size: 21px;
+    color: #484848;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.single_product p, .single_product li {
+    color: #545454;
+    font-size: 14px;
+}
+
+.single_product h1 {
+    color: #3e3d38;
+}
+
+.single_product h2 {
+    font-size: 20px;
+    color: #545454;
+    font-weight:400;
+}
+
+input:focus {
+    outline: none;
+}
+
+.title_related {
+    margin: 60px auto 10px;
+    color: #3e3d38f6;
+    position: relative;
+    line-height: 40px;
+}
+
 
 /*Used so when screen size is smaller it shows one product at a time*/
 @media only screen and (max-width: 600px) {
     .row {
         text-align: center;
     }
-    .col4 {
+
+    .col2, .col3, .col4 {
         flex-basis: 100%;
+    }
+
+    .single_product .row {
+        text-align: left;
+    }
+
+    .single_product .col2 {
+        padding: 20px 0;
+    }
+
+    .single_product h1 {
+        font-size: 30px;
+        line-height: 35px;
     }
 }
