@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <tile> </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-----------Header----------->
+    <div class="container">
+            <!--Top Navigation bar-->
+            <div class="navbar">
+                <!--Logo-->
+                <div class="logo">
+                    <a href="index.html"><img src="img/logo.png" width="160px"></a>
+                </div>
+
+                <!--Options-->
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="account.html">Account</a></li>
+                    </ul>
+                </nav>
+                <a href="shopping_cart.html"><img src="img/shopcart.png" width="30px" height="30px"></a>
+            </div>
+    </div>
+
+
+    <!-----------Account page----------->
+    <div class="account_page">
+        <div class="container">
+            <div class="row">
+                <div class="col2">
+                    <img src="img/ftpro1.png" width="100%">
+                </div>
+                <div class="col2">
+                    <div class="form_container">
+                        <div class="form_button">
+                            <span onclick="signin()">Sign In</span>
+                            <span onclick="signup()">Sign Up</span>
+                            <hr id="Indicator">
+                        </div>
+
+                        <!--Log in form-->
+                        <form id="SigninForm">
+                            <input type="text" placeholder="Username">
+                            <input type="password" placeholder="Password">
+                            <button type="submit" class="button">Sign In</button>
+                            <a href="">Forgot Password</a>
+                        </form>
+
+                        <!--Registration form-->
+                        <form id="SignupForm">
+                            <input type="text" placeholder="Username">
+                            <input type="email" placeholder="Email">
+                            <input type="password" placeholder="Password">
+                            <button type="submit" class="button">Sign Up</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-----------Footer----------->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer_column1">
+                    <h3>Discover</h3>
+                    <ul>
+                        <li>Product Ingredients</li>
+                        <li>Coupons</li>
+                        <li>Careers</li>
+                        <li>Help</li>  
+                    </ul>
+                </div>
+
+                <div class="footer_column2">
+                    <img src="img/logo.png">
+                    <p>Finding New Scents For You</p>
+                </div>
+
+                <div class="footer_column3">
+                    <h3>Get Connected</h3>
+                    <ul>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>TikTok</li>
+                        <li>Facebook</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="bottomNote">A-Team Project - Fall 2023</p>
+        </div>
+    </div>
+
+
+    <!--js for toggle form-->
+    <script>
+    var SigninForm = document.getElementById("SigninForm");
+    var SignupForm = document.getElementById("SignupForm");
+    var Indicator = document.getElementById("Indicator");
+
+        function signup() {
+            SignupForm.style.transform = "translateX(0px)";
+            SigninForm.style.transform = "translateX(0px)";
+            Indicator.style.transform = "translateX(100px)";
+        }
+
+        function signin() {
+            SignupForm.style.transform = "translateX(300px)";
+            SigninForm.style.transform = "translateX(300px)";
+            Indicator.style.transform = "translateX(0px)";
+        }
+    </script>
+</body>
+</html>
