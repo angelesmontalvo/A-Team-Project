@@ -366,6 +366,77 @@ input:focus {
     line-height: 40px;
 }
 
+/*-----------Shopping Cart-----------*/
+
+.cart_page {
+    margin: 80px auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart_info {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+th {
+    text-align: left;
+    padding: 5px;
+    color: white;
+    background: #9c8347da;
+    font-weight: normal;
+}
+
+td {
+    padding: 15px 5px;
+}
+
+td input {
+    width: 50px;
+    height: 40px;
+    padding: 5px;
+}
+
+td a {
+    color: #9c8347da;
+    font-size: 12px;
+}
+
+td img {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+}
+
+.cart_total {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cart_total table {
+    border-top: 3px solid #9c8347da;
+    width: 100%;
+    max-width: 370px;
+}
+
+td:last-child {
+    text-align: right;
+}
+
+th:last-child {
+    text-align: right;
+}
+
+
+
+
+
+
+
+
 
 /*Used so when screen size is smaller it shows one product at a time*/
 @media only screen and (max-width: 600px) {
@@ -388,5 +459,9 @@ input:focus {
     .single_product h1 {
         font-size: 30px;
         line-height: 35px;
+    }
+
+    .cart_info p {
+        display: none;
     }
 }
