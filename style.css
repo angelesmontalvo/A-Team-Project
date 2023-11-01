@@ -14,21 +14,17 @@
     padding: 35px;
 }
 
-form {
-    display:flex;
-    align-items: center;
-    justify-content: center;
-}
 
 .search-bar {
     width:100%;
-    max-width: 600px;
-    height: 50px;
+    max-width: 550px;
+    height: 45px;
     background: rgba(206, 198, 177, 0.2);
     display: flex;
     align-items: center;
     border-radius: 60px;
-    padding: 10px 20px;
+    padding: 20px 10px;
+    margin-left: 100px;
 }
 
 .search-bar input {
@@ -42,7 +38,7 @@ form {
 }
 
 .search-bar button img{
-    width: 20px;
+    width: 18px;
 }
 .search-bar button {
     border: 0;
