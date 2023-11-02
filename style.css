@@ -5,6 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
+    text-transform: capitalize;
 }
 
 /*-----------Design of navigation bar on top of website-----------*/
@@ -584,4 +585,5 @@ form a {
     .cart_info p {
         display: none;
     }
+
 }

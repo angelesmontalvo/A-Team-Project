@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-----------Header----------->
+    <div class="header">
+        <div class="container">
+            <!--Top Navigation bar-->
+            <div class="navbar">
+                <!--Logo-->
+                <div class="logo">
+                    <a href="index.html"><img src="img/logo.png" width="160px"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--------Check Out Form------>
+
+
+    <form action="your_server_script.php" method="post">
+
+        <div class="row">
+            <!---Billing address----->
+            <div class ="col">
+                <h3 class="title">billing address</h3>
+
+                <div class="inputBox">
+                    <span>full name :</span>
+                    <input type="text" placeholder="Lily ">
+                </div>
+
+                <div class="inputBox">
+                    <span>email :</span>
+                    <input type="email" placeholder="example@example.com">
+                </div>
+
+                <div class="inputBox">
+                    <span>address :</span>
+                    <input type="text" placeholder="room - street - locality">
+                </div>
+
+                <div class="inputBox">
+                    <span>city :</span>
+                    <input type="text" placeholder="Los Angeles">
+                </div>
+
+                <div class="flex">
+                    <div class="inputBox"></div>
+                         <span>state :</span>
+                         <input type="text" placeholder="California">
+                    </div>
+
+                    <div class="inputBox">
+                         <span>zip code :</span>
+                         <input type="text" placeholder="90212">
+                    </div>
+
+                </div>
+        
+
+        <!----payment ---->
+            <div class ="col">
+
+            <h3 class="title">payment</h3>
+            
+            <!----payment form elements---->
+            <div class="inputBox">
+                <span>cards accepted :</span>
+                <img src="img/Credit-Card.png" alt="Credit Cards Accepted" style="width: 200px;">
+            </div>
+
+            <div class="inputBox">
+                <span>name on card:</span>
+                <input type="text" placeholder="Ms. Lily">
+            </div>
+           
+            <div class="inputBox">
+                <span>credit card number :</span>
+                <input type="number" placeholder="0000-0000-0000-0000">
+            </div>
+
+            <div class="inputBox">
+                <span>exp month :</span>
+                <input type="text" placeholder="january">
+            </div>
+
+            <div class="flex">
+                <div class="inputBox"></div>
+                     <span>exp year :</span>
+                     <input type="number" placeholder="2000">
+                </div>
+
+                <div class="inputBox">
+                     <span>CVV :</span>
+                     <input type="text" placeholder="1234">
+                </div>
+                <input type="submit" value="Proceed to Checkout" class="submit-btn" style="width: 250px; float: right;">
+            </div>
+            
+           
+        </div>
+    
+    
+    </form>
+
+
+   
+    <!-----------Footer----------->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer_column1">
+                    <h3>Discover</h3>
+                    <ul>
+                        <li>Product Ingredients</li>
+                        <li>Coupons</li>
+                        <li>Careers</li>
+                        <li>Help</li>  
+                    </ul>
+                </div>
+
+                <div class="footer_column2">
+                    <img src="img/logo.png">
+                    <p>Finding New Scents For You</p>
+                </div>
+
+                <div class="footer_column3">
+                    <h3>Get Connected</h3>
+                    <ul>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>TikTok</li>
+                        <li>Facebook</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="bottomNote">A-Team Project - Fall 2023</p>
+        </div>
+    </div>
+
+
+</body>
+</html>
