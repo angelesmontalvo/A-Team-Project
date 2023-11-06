@@ -22,8 +22,7 @@
 
     <!--------Check Out Form------>
 
-
-    <form action="your_server_script.php" method="post">
+    <form action="" method="post">
 
         <div class="row">
             <!---Billing address----->
@@ -32,7 +31,7 @@
 
                 <div class="inputBox">
                     <span>full name :</span>
-                    <input type="text" placeholder="Lily ">
+                    <input type="text" placeholder="Lily Smith">
                 </div>
 
                 <div class="inputBox">
@@ -50,7 +49,7 @@
                     <input type="text" placeholder="Los Angeles">
                 </div>
 
-                <div class="flex">
+                <div class="inputBox">
                     <div class="inputBox"></div>
                          <span>state :</span>
                          <input type="text" placeholder="California">
@@ -65,13 +64,12 @@
         
 
         <!----payment ---->
-            <div class ="col">
+        <div class ="col">
 
             <h3 class="title">payment</h3>
             
             <!----payment form elements---->
-            <div class="inputBox">
-                <span>cards accepted :</span>
+            <div class="cardBox">
                 <img src="img/Credit-Card.png" alt="Credit Cards Accepted" style="width: 200px;">
             </div>
 
@@ -87,20 +85,20 @@
 
             <div class="inputBox">
                 <span>exp month :</span>
-                <input type="text" placeholder="january">
+                <input type="number" min="1" max="12" placeholder="1">
             </div>
 
             <div class="flex">
                 <div class="inputBox"></div>
                      <span>exp year :</span>
-                     <input type="number" placeholder="2000">
+                     <input type="number" min="2023" max="2030" placeholder="2023">
                 </div>
 
                 <div class="inputBox">
                      <span>CVV :</span>
                      <input type="text" placeholder="1234">
                 </div>
-                <input type="submit" value="Proceed to Checkout" class="submit-btn" style="width: 250px; float: right;">
+                <input type="submit" value="Place Order" class="submit-btn" style="width: 250px; float: right;">
             </div>
             
            
