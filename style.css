@@ -447,12 +447,12 @@ td img {
     margin-right: 10px;
 }
 
-.cart_total {
+.cart_subtotal {
     display: flex;
     justify-content: flex-end;
 }
 
-.cart_total table {
+.cart_subtotal table {
     border-top: 3px solid #9c8347da;
     width: 100%;
     max-width: 370px;
@@ -466,6 +466,16 @@ th:last-child {
     text-align: right;
 }
 
+.cart_total {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cart_total table {
+    border-top: 3px solid #9c8347da;
+    width: 100%;
+    max-width: 370px;
+}
 
 /*-----------Account Page-----------*/
 
@@ -567,7 +577,6 @@ form a {
     margin-top: -60px;
     margin-bottom: 60px;
     transition: transform 0.5s;
-
 }
 
 .submit-btn {
@@ -575,7 +584,7 @@ form a {
     border: none;
     cursor: pointer;
     margin: 20px 0;
-    float:right;
+    float: inline-end;
     height: 35px;
     font-size: 14px;
     background: #a67701;
