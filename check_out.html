@@ -21,87 +21,90 @@
     </div>
 
     <!--------Check Out Form------>
+    <div class="checkout-container">
+        <form action="" method="post">
+            <div class="checkout-row">
+                <!---Billing address----->
+                <div class ="col">
+                    <h3 class="title">billing address</h3>
 
-    <form action="" method="post">
+                    <div class="inputBox">
+                        <span>full name :</span>
+                        <input type="text" placeholder="Lily Smith">
+                    </div>
 
-        <div class="row">
-            <!---Billing address----->
-            <div class ="col">
-                <h3 class="title">billing address</h3>
+                    <div class="inputBox">
+                        <span>email :</span>
+                        <input type="email" placeholder="example@example.com">
+                    </div>
 
-                <div class="inputBox">
-                    <span>full name :</span>
-                    <input type="text" placeholder="Lily Smith">
+                    <div class="inputBox">
+                        <span>address :</span>
+                        <input type="text" placeholder="123 Example Blvd">
+                    </div>
+
+                    <div class="inputBox">
+                        <span>city :</span>
+                        <input type="text" placeholder="Los Angeles">
+                    </div>
+
+                    <div class="flex">
+                        <div class="inputBox">
+                            <span>state :</span>
+                            <input type="text" placeholder="California">
+                        </div>
+
+                        <div class="inputBox">
+                            <span>zip code :</span>
+                            <input type="text" placeholder="123 456">
+                        </div>
+                    </div>
                 </div>
-
-                <div class="inputBox">
-                    <span>email :</span>
-                    <input type="email" placeholder="example@example.com">
-                </div>
-
-                <div class="inputBox">
-                    <span>address :</span>
-                    <input type="text" placeholder="room - street - locality">
-                </div>
-
-                <div class="inputBox">
-                    <span>city :</span>
-                    <input type="text" placeholder="Los Angeles">
-                </div>
-
-                <div class="inputBox">
-                    <span>state :</span>
-                    <input type="text" placeholder="California">
-                </div>
-
-                <div class="inputBox">
-                    <span>zip code :</span>
-                    <input type="text" placeholder="90212">
-                </div>
-            </div>
-        
-
-        <!----payment ---->
-            <div class ="col">
-
-            <h3 class="title">payment</h3>
             
-            <!----payment form elements---->
-            <div class="cardBox">
-                <img src="img/Credit-Card.png" alt="Credit Cards Accepted" style="width: 200px;">
-            </div>
 
-            <div class="inputBox">
-                <span>name on card:</span>
-                <input type="text" placeholder="Ms. Lily">
-            </div>
-           
-            <div class="inputBox">
-                <span>credit card number :</span>
-                <input type="number" placeholder="0000-0000-0000-0000">
-            </div>
+            <!----payment ---->
+                <div class ="col">
 
-            <div class="inputBox">
-                <span>exp month :</span>
-                <input type="number" min="1" max="12" placeholder="1">
-            </div>
+                    <h3 class="title">payment</h3>
+                
+                <!----payment form elements---->
+                    <div class="cardBox">
+                        <img src="img/Credit-Card.png" alt="Credit Cards Accepted" style="width: 200px;">
+                    </div>
 
-            <div class="flex">
-                <div class="inputBox"></div>
-                     <span>exp year :</span>
-                     <input type="number" min="2023" max="2030" placeholder="2023">
-                </div>
+                    <div class="inputBox">
+                        <span>name on card:</span>
+                        <input type="text" placeholder="Ms. Lily Smith">
+                    </div>
+                
+                    <div class="inputBox">
+                        <span>credit card number :</span>
+                        <input type="number" placeholder="0000-0000-0000-0000">
+                    </div>
 
-                <div class="inputBox">
-                     <span>CVV :</span>
-                     <input type="text" placeholder="1234">
+                    <div class="inputBox">
+                        <span>exp month :</span>
+                        <input type="number" min="1" max="12" placeholder="1">
+                    </div>
+
+                    <div class="flex">
+                        <div class="inputBox">
+                            <span>exp year :</span>
+                            <input type="number" min="2023" max="2030" placeholder="2023">
+                        </div>
+
+                        <div class="inputBox">
+                            <span>CVV :</span>
+                            <input type="text" placeholder="1234">
+                        </div>
+                    </div>
+
                 </div>
                 
-                <input type="submit" value="Place Order" class="submit-btn">
             </div>
-            
-        </div>
-    </form>
+            <input type="submit" value="Place Order" class="submit-btn">
+        </form>
+    </div>
 
 
    

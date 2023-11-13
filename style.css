@@ -570,6 +570,16 @@ form a {
 }
 
 /*-----------Check out page-----------*/
+
+.checkout-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    min-height: 100vh;
+    background: #dabd74d7;
+}
+
 .col {
     text-transform: capitalize;
     padding: 15px;
