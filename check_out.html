@@ -59,16 +59,30 @@
                             <input type="text" placeholder="123 456">
                         </div>
                     </div>
+
+                    <!--Shipping Method options-->
+                    <div class="inputBox">
+                        <span>Shipping Method: </span>
+                        <label>
+                            <input type="radio" name="shipping-method" value="standard" checked>
+                            Free Shipping - $0.00
+                        </label>
+                        <label>
+                            <input type="radio" name="shipping-method" value="express">
+                            Express Shipping - $10.00
+                        </label>
+                    </div>
                 </div>
             
 
-            <!----payment ---->
+                <!----payment ---->
                 <div class ="col">
 
                     <h3 class="title">payment</h3>
                 
                 <!----payment form elements---->
-                    <div class="cardBox">
+                    <div class="inputBox">
+                        <span>cards accepted: </span>
                         <img src="img/Credit-Card.png" alt="Credit Cards Accepted" style="width: 200px;">
                     </div>
 
@@ -99,11 +113,34 @@
                         </div>
                     </div>
 
+                    <!--Cart Total-->
+                    <div class="cart_total">
+                        <table>
+                            <tr>
+                                <td>Subtotal</td>
+                                <td id="subtotal">200.00</td>
+                            </tr>
+                            <tr>
+                                <td>Shipping</td>
+                                <td id="shipping">0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Tax</td>
+                                <td id="tax">0.00</td>
+                            </tr>
+                            <tr class="TOTAL">
+                                <td>Total</td>
+                                <td id="total">0.00</td>
+                            </tr>
+                        </table>
+                    </div>
+
                 </div>
                 
             </div>
             <input type="submit" value="Place Order" class="submit-btn">
         </form>
+        <script src="checkout.js"></script>
     </div>
 
 

@@ -206,7 +206,7 @@ h4 {
 
 /*-----------Footer-----------*/
 .footer {
-    background: #ede4cd;
+    background: radial-gradient(#fff, #ede4cd);
     color: #767575;
     font-size: 14px;
     padding: 60px 0 20px;
@@ -466,17 +466,6 @@ th:last-child {
     text-align: right;
 }
 
-.cart_total {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.cart_total table {
-    border-top: 3px solid #9c8347da;
-    width: 100%;
-    max-width: 370px;
-}
-
 /*-----------Account Page-----------*/
 
 .account_page {
@@ -578,32 +567,118 @@ form a {
     align-items: center;
     padding: 25px;
     min-height: 100vh;
-    background: #dabd74d7;
+    background: radial-gradient(#fff, #ede4cd);
+    padding-bottom: 70px;
 }
 
-.col {
+.checkout-container form{
+    padding: 20px;
+    width: 700px;
+    background: white;
+    box-shadow: 0 5px 10 px rgba(0,0,0,0.1);
+}
+
+.checkout-container form .checkout-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.checkout-container form .checkout-row .col {
     text-transform: capitalize;
-    padding: 15px;
-    min-width: 200px;
-    margin-top: -60px;
-    margin-bottom: 60px;
-    transition: transform 0.5s;
+    flex: 1 1 250px;
 }
 
-.submit-btn {
-    width: 150px;
-    border: none;
+.checkout-container form .checkout-row .col .title {
+    font-size: 20px;
+    color: #3e3d38e3;
+    padding-bottom: 3px;
+}
+
+.checkout-container form .checkout-row .col .inputBox {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.checkout-container form .checkout-row .col .inputBox span {
+    margin-bottom: 3px;
+    display: block;
+}
+
+.checkout-container form .checkout-row .col .inputBox label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0px;
+    font-size: 15px;
+    color: #222221;
+}
+
+.checkout-container form .checkout-row .col .inputBox input {
+    margin-right: 5px;
+    font-size: 13px;
+    padding: 10px 10px;
+    font-size: 13px;
+}
+
+.checkout-container form .checkout-row .col .inputBox input,
+.checkout-container form .checkout-row .col .inputBox label {
+    width: auto;
+}
+
+.checkout-container form .checkout-row .col .inputBox input:focus {
+    border: 1px solid #a67701;
+}
+
+.checkout-container form .checkout-row .col .inputBox img {
+    height: 34px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    filter: drop-shadow(0 0 1px #0000);
+}
+
+.cart_total {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 15px;
+}
+
+.cart_total table {
+    border-top: 3px solid #9c8347da;
+    width: 100%;
+    max-width: 370px;
+}
+
+.cart_total .TOTAL{
+    border-top: 3px solid #9c8347da;
+    font-size: 25px;
+}
+
+.checkout-container form .submit-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    background: #a67701;
+    color: #fff;
+    margin-top: 5px;
     cursor: pointer;
+    border-radius: 30px;
+    height: 35px;
+    transition: background 0.5s;
+    border: none;
+}
+
+.checkout-container form .submit-btn:hover {
+    background: #a67701d7;
+}
+
+/*.submit-btn {
+    width: 150px;
     margin: 20px 0;
     float: inline-end;
-    height: 35px;
-    font-size: 14px;
-    background: #a67701;
-    color: white;
     padding: 8px 30px;
-    border-radius: 30px;
-    transition: background 0.5s;
-}
+}*/
 
 /*Used so when screen size is smaller it shows one product at a time*/
 @media only screen and (max-width: 600px) {
