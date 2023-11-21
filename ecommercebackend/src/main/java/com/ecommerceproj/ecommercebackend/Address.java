@@ -1,6 +1,8 @@
 package com.ecommerceproj.ecommercebackend;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,6 +36,7 @@ public class Address {
 
   //user is associated with address 
 
+  @JsonIgnore
   @ManyToOne(optional = false)
   @JoinColumn(name = "user_id", nullable = false)
   private User user; 

@@ -10,7 +10,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table; 
 import jakarta.persistence.OneToMany; 
 import java.util.ArrayList; 
-import java.util.List; 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore; 
 
 @Entity
 @Table(name = "user")
@@ -23,6 +25,7 @@ public class User {
   @Column(name = "username", nullable = false, unique = true)
   private String username; 
 
+  @JsonIgnore
   @Column(name = "password", nullable = false, length = 1000)
   private String password;
 
@@ -35,14 +38,15 @@ public class User {
   @Column(name = "last_name", nullable = false)
   private String lastName; 
 
+  @JsonIgnore
   @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
   private List<Address> addresses = new ArrayList<>(); 
 
-  public List<Address> getAdresses(){
+  public List<Address> getAddresses(){
     return addresses;
   } 
 
-  public void setAddress(List<Address> addresses){
+  public void setAddresses(List<Address> addresses){
     this.addresses = addresses;
   }
 
