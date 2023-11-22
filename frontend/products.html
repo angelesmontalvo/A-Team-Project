@@ -1,3 +1,9 @@
+<!--
+    PRODUCTS PAGE
+    October 21, 2023
+    Angeles Montalvo
+    This html file is used to create a page that displays all the products in the website
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +23,13 @@
                     <a href="index.html"><img src="img/logo.png" width="160px"></a>
                 </div>
 
-                <!--Options-->
+                <!--SearchBar-->
+                <form action="" class="search-bar">
+                    <input type="text" placeholder="Search by fragrance or season" name="q">
+                    <button type="submit"><img src="img/search-icon.png" width="20px"></button>
+                </form>
+
+                 <!--Navigation menu options: Home, Products, Account and Shopping Cart-->
                 <nav>
                     <ul>
                         <li><a href="index.html">Home</a></li>
@@ -25,90 +37,115 @@
                         <li><a href="account.html">Account</a></li>
                     </ul>
                 </nav>
+                <!--Shopping cart icon-->
                 <a href="shopping_cart.html"><img src="img/shopcart.png" width="30px" height="30px"></a>
             </div>
-
-            <!--Homepage image container-->
-            <div class="image-container">
-                <img src="img/homeimg1.png" alt="home image">
-                <div class="overlay-text">
-                    <h1>Discover New <br> Seasonal Scents</h1>
-                    <p>LIMITED TIME ONLY!</p>
-                    <a href="products.html" class="button">Shop Now &#8594;</a>
-                </div>
-            </div>
-
         </div>
     </div>
+    <!-----------END of header----------->
 
 
     <!-----------Products----------->
     <div class="smallcontainer">
-        <!--Best products-->
-        <h2 class="title">Best Sellers</h2>
+
+        <!--Sorting Options-->
+        <div class="row row2">
+            <h2>All Candles</h2>
+            <select>
+                <option>Sort by Default</option>
+                <option>Price Low to High</option>
+                <option>Price High to Low</option>
+            </select>
+        </div>
+
+        <!--Row of products-->
+        <!--1st Row-->
         <div class="row">
-            <div class="col3">
-                <a href="product_details.html"><img src="img/ftpro1.png" width="250px"></a>
+            <div class="col4">
+                <a href="product_details.html"><img src="img/ftpro1.png" width="200px"></a>
                 <a href="product_details.html"><h4>Chamomile</h4></a>
                 <p>$12.99</p>
             </div>
-            <div class="col3">
-                <img src="img/ftpro2.png" width="250px">
+            <div class="col4">
+                <img src="img/ftpro2.png" width="200px">
                 <h4>Serenity</h4>
                 <p>$12.99</p>
             </div>
-            <div class="col3">
-                <img src="img/ftpro3.png" width="250px">
+            <div class="col4">
+                <img src="img/ftpro3.png" width="200px">
                 <h4>Calm Rose</h4>
+                <p>$12.99</p>
+            </div>
+            <div class="col4">
+                <img src="img/new1.png" width="200px">
+                <h4>Candy Cane</h4>
+                <p>$12.99</p>
+            </div>
+        </div>
+        <!--2nd Row-->
+        <div class="row">
+            <div class="col4">
+                <img src="img/new2.png" width="200px">
+                <h4>New Vanilla</h4>
+                <p>$12.99</p>
+            </div>
+            <div class="col4">
+                <img src="img/new3.png" width="200px">
+                <h4>CranMerry</h4>
+                <p>$12.99</p>
+            </div>
+            <div class="col4">
+                <img src="img/new4.png" width="200px">
+                <h4>Hot Cocoa</h4>
+                <p>$12.99</p>
+            </div>
+            <div class="col4">
+                <img src="img/new5.png" width="200px">
+                <h4>Winter Forest</h4>
+                <p>$12.99</p>
+            </div>
+        </div>
+        <!--3rd Row-->
+        <div class="row">
+            <div class="col4">
+                <img src="img/new6.png" width="200px">
+                <h4>Apple Pie</h4>
+                <p>$12.99</p>
+            </div>
+            <div class="col4">
+                <img src="img/new7.png" width="200px">
+                <h4>Mistletoe</h4>
+                <p>$12.99</p>
+            </div>
+            <div class="col4">
+                <img src="img/new8.png" width="200px">
+                <h4>Pecan</h4>
+                <p>$12.99</p>
+            </div>
+            <div class="col4">
+                <img src="img/new9.png" width="200px">
+                <h4>Gingerbread</h4>
                 <p>$12.99</p>
             </div>
         </div>
 
-        <!--New Arrivals-->
-        <h2 class="title">New Arrivals</h2>
-        <!--First row-->
-        <div class="row">
-            <div class="col3">
-                <img src="img/new1.png" width="250px">
-                <h4>Candy Cane</h4>
-                <p>$12.99</p>
-            </div>
-            <div class="col3">
-                <img src="img/new2.png" width="250px">
-                <h4>New Vanilla</h4>
-                <p>$12.99</p>
-            </div>
-            <div class="col3">
-                <img src="img/new3.png" width="250px">
-                <h4>CranMerry</h4>
-                <p>$12.99</p>
-            </div>
+        <!--Next page button-->
+        <div class="page_button">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>&#8594;</span>
         </div>
-        <!--Second row-->
-        <div class="row">
-            <div class="col3">
-                <img src="img/new4.png" width="250px">
-                <h4>Hot Cocoa</h4>
-                <p>$12.99</p>
-            </div>
-            <div class="col3">
-                <img src="img/new5.png" width="250px">
-                <h4>Winter Forest</h4>
-                <p>$12.99</p>
-            </div>
-            <div class="col3">
-                <img src="img/new6.png" width="250px">
-                <h4>Apple Pie</h4>
-                <p>$12.99</p>
-            </div>
-        </div>
+        
     </div>
+    <!-----------END of Products----------->
 
 
     <!-----------Footer----------->
     <div class="footer">
         <div class="container">
             <div class="row">
+                <!--Website info-->
                 <div class="footer_column1">
                     <h3>Discover</h3>
                     <ul>
@@ -119,11 +156,13 @@
                     </ul>
                 </div>
 
+                <!--Website logo-->
                 <div class="footer_column2">
                     <img src="img/logo.png">
                     <p>Finding New Scents For You</p>
                 </div>
 
+                <!--Social media-->
                 <div class="footer_column3">
                     <h3>Get Connected</h3>
                     <ul>
@@ -138,7 +177,6 @@
             <p class="bottomNote">A-Team Project - Fall 2023</p>
         </div>
     </div>
-
-
+    <!-----------END of footer----------->
 </body>
 </html>

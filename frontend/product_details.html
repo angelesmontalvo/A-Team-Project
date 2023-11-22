@@ -1,3 +1,10 @@
+<!--
+    PRODUCT DETAILS PAGE
+    October 21, 2023
+    Angeles Montalvo
+    This html file is used to create a page that displays details of a specific product such as price, overview, size, etc
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +30,7 @@
                     <button type="submit"><img src="img/search-icon.png" width="20px"></button>
                 </form>
 
-                <!--Options-->
+                <!--Navigation menu options: Home, Products, Account and Shopping Cart-->
                 <nav>
                     <ul>
                         <li><a href="index.html">Home</a></li>
@@ -31,29 +38,37 @@
                         <li><a href="account.html">Account</a></li>
                     </ul>
                 </nav>
+                <!--Shopping cart icon-->
                 <a href="shopping_cart.html"><img src="img/shopcart.png" width="30px" height="30px"></a>
             </div>
         </div>
     </div>
+    <!-----------END of header----------->
 
     
     <!-----------Details for a single product----------->
     <div class="smallcontainer single_product">
         <div class="row">
+            <!--Image of the product-->
             <div class="col2">
                 <img src="img/ftpro1.png" width="100%">
             </div>
 
+            <!--Overview of product-->
             <div class="col2">
                 <h2>Best Sellers</h2>
                 <h1 id="prdctname">Chamomile Candle</h1>
                 <h4 id="productPrice">$9.99</h4>
+                <!--updatePrice() used to update price-->
                 <select id="sizeDropdown" onchange="updatePrice()">
                     <option value="9.99">7 oz Single Wick Candle</option>
                     <option value="13.99">13 oz 3-Wick Candle</option>
                 </select>
+                <!--Amount to be added to cart-->
                 <input type="number" value="1">
+                <!--Add to cart button-->
                 <a href="" class="button">Add To Cart</a>
+                <!--Details-->
                 <h3>Overview</h3>
                 <p>Relaxing long-lasting chamomile fragrance that will fill any room</p>
                 <li>Burns up to 40 hours</li>
@@ -63,6 +78,7 @@
         </div>
         <script src="prdctdetails.js"></script>
     </div>
+    <!-----------END of details for a single product----------->
 
 
     <!-----------Related Products----------->
@@ -93,12 +109,14 @@
         </div>
         
     </div>
+    <!-----------END of related Products----------->
 
 
     <!-----------Footer----------->
     <div class="footer">
         <div class="container">
             <div class="row">
+                <!--Website info-->
                 <div class="footer_column1">
                     <h3>Discover</h3>
                     <ul>
@@ -109,11 +127,13 @@
                     </ul>
                 </div>
 
+                <!--Website logo-->
                 <div class="footer_column2">
                     <img src="img/logo.png">
                     <p>Finding New Scents For You</p>
                 </div>
 
+                <!--Social media-->
                 <div class="footer_column3">
                     <h3>Get Connected</h3>
                     <ul>
@@ -128,5 +148,7 @@
             <p class="bottomNote">A-Team Project - Fall 2023</p>
         </div>
     </div>
+    <!-----------END of footer----------->
+    
 </body>
 </html>
