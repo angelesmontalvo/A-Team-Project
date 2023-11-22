@@ -1,59 +1,86 @@
 <!DOCTYPE html>
+<!--Declaration of document type as HTML5-->
 <html lang="en">
+    <!--HTML root element with language set to English-->
 <head>
+    <!--Head section containing meta-information about the document-->
     <meta charset="UTF-8">
+    <!--Character encoding set to UTF-8 for universal text compatibility-->
     <title> </title>
+    <!-- Title of the webpage, visible in the browser's title bar or tab -->
     <link rel="stylesheet" href="style.css">
+    <!-- Link to external CSS file for styling the webpage -->
 </head>
 
 <body>
+    <!-- Body of the HTML document, contains all visible content -->
+    <!-- Header Section -->
     <!-----------Header----------->
     <div class="header">
+         <!-- Container for the header, typically contains branding elements -->
         <div class="container">
+            <!-- Generic container for layout purposes -->
             <!--Top Navigation bar-->
             <div class="navbar">
+                <!-- Navigation bar for website navigation links -->
                 <!--Logo-->
                 <div class="logo">
+                    <!-- Container for the logo -->
                     <a href="index.html"><img src="img/logo.png" width="160px"></a>
+                    <!-- Hyperlink with an image as logo, links back to the homepage -->
                 </div>
             </div>
         </div>
     </div>
 
     <!--------Check Out Form------>
+    <!-- Checkout Form Section -->
     <div class="checkout-container">
+        <!-- Container for the checkout process -->
         <form action="" method="post">
+             <!-- Form for checkout, method 'post' sends data to server -->
             <div class="checkout-row">
+                <!-- Row within the form for layout -->
+                <!-- Billing Address Section -->
                 <!---Billing address----->
                 <div class ="col">
+                    <!-- Column for billing address details -->
                     <h3 class="title">billing address</h3>
+                    <!-- Heading for the billing address section -->
 
+                    <!-- Input Box for Full Name -->
                     <div class="inputBox">
                         <span>full name :</span>
                         <input type="text" placeholder="Lily Smith">
                     </div>
 
+                    <!-- Input Box for Email -->
                     <div class="inputBox">
                         <span>email :</span>
                         <input type="email" placeholder="example@example.com">
                     </div>
 
+                    <!-- Input Box for Address -->
                     <div class="inputBox">
                         <span>address :</span>
                         <input type="text" placeholder="123 Example Blvd">
                     </div>
 
+                    <!-- Input Box for City -->
                     <div class="inputBox">
                         <span>city :</span>
                         <input type="text" placeholder="Los Angeles">
                     </div>
 
+                    <!-- Flex Container for State and Zip Code -->
                     <div class="flex">
+                        <!-- State Input Box -->
                         <div class="inputBox">
                             <span>state :</span>
                             <input type="text" placeholder="California">
                         </div>
 
+                        <!-- Zip Code Input Box -->
                         <div class="inputBox">
                             <span>zip code :</span>
                             <input type="text" placeholder="123 456">
@@ -75,47 +102,54 @@
                 </div>
             
 
-                <!----payment ---->
+                <!-- Payment Section -->
                 <div class ="col">
 
+                    <!-- Column for payment information -->
                     <h3 class="title">payment</h3>
-                
+                    <!-- Heading for the payment section -->
                 <!----payment form elements---->
                     <div class="inputBox">
+                        <!-- Display of Accepted Credit Cards -->
                         <span>cards accepted: </span>
                         <img src="img/Credit-Card.png" alt="Credit Cards Accepted" style="width: 200px;">
                     </div>
 
+                    <!-- Input Box for Name on Card -->
                     <div class="inputBox">
                         <span>name on card:</span>
                         <input type="text" placeholder="Ms. Lily Smith">
                     </div>
                 
+                    <!-- Input Box for Credit Card Number -->
                     <div class="inputBox">
                         <span>credit card number :</span>
                         <input type="number" placeholder="0000-0000-0000-0000">
                     </div>
-
+                    <!-- Input Box for Expiration Month -->
                     <div class="inputBox">
                         <span>exp month :</span>
                         <input type="number" min="1" max="12" placeholder="1">
                     </div>
-
+                    <!-- Flex Container for Expiration Year and CVV -->
                     <div class="flex">
+                        <!-- Expiration Year Input Box -->
                         <div class="inputBox">
                             <span>exp year :</span>
                             <input type="number" min="2023" max="2030" placeholder="2023">
                         </div>
-
+                        <!-- CVV Input Box -->
                         <div class="inputBox">
                             <span>CVV :</span>
                             <input type="text" placeholder="1234">
                         </div>
                     </div>
-
+                    <!-- Cart Total Display -->
                     <!--Cart Total-->
                     <div class="cart_total">
+                        <!-- Container for displaying the total cost of the cart -->
                         <table>
+                            <!-- Table structure to display cart totals -->
                             <tr>
                                 <td>Subtotal</td>
                                 <td id="subtotal">200.00</td>
@@ -139,19 +173,27 @@
                 
             </div>
             <input type="submit" value="Place Order" class="submit-btn">
+            <!-- Submit button for the form -->
         </form>
         <script src="checkout.js"></script>
+        <!-- External JavaScript file linked for additional functionality -->
     </div>
 
 
-   
-    <!-----------Footer----------->
+    <!----------- Footer Section ----------->
     <div class="footer">
+        <!-- Container for the footer of the webpage -->
         <div class="container">
+            <!-- Generic container for layout -->
             <div class="row">
+                <!-- Row for organizing footer content -->
+
+                <!-- Footer Column 1 -->
                 <div class="footer_column1">
                     <h3>Discover</h3>
+                    <!-- Heading for the column -->
                     <ul>
+                        <!-- Unordered list for footer links -->
                         <li>Product Ingredients</li>
                         <li>Coupons</li>
                         <li>Careers</li>
@@ -159,14 +201,22 @@
                     </ul>
                 </div>
 
+                <!-- Footer Column 2 -->
                 <div class="footer_column2">
+                    <!-- Second column in the footer -->
                     <img src="img/logo.png">
+                    <!-- Logo image in the footer -->
                     <p>Finding New Scents For You</p>
+                    <!-- Tagline or brief description -->
                 </div>
 
+                <!-- Footer Column 3 -->
                 <div class="footer_column3">
+                    <!-- Third column in the footer -->
                     <h3>Get Connected</h3>
+                    <!-- Heading for the column -->
                     <ul>
+                        <!-- Unordered list for social media links -->
                         <li>Twitter</li>
                         <li>Instagram</li>
                         <li>TikTok</li>
@@ -175,7 +225,9 @@
                 </div>
             </div>
             <hr>
+            <!-- Horizontal rule for visual separation -->
             <p class="bottomNote">A-Team Project - Fall 2023</p>
+            <!-- Footer note or copyright statement -->
         </div>
     </div>
 
