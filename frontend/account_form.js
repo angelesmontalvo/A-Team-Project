@@ -38,8 +38,12 @@ function handleSignInSubmit(event) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) throw new Error('Login failed');
+        return response.json();
+    })
     .then(data => {
+        document.getElementById('signInSuccessMessage').textContent = 'Login successful!';
         console.log('Sign In Success:', data);
         //Handle successful sign-in, store token, redirect, etc.
     })
@@ -66,15 +70,26 @@ function handleSignUpSubmit(event) {
     })
 
     .then(response => {
-        if (!response.ok) throw new Error('Sign Up Failed');
+        if (response.status === 409) {
+            //User already exists
+            throw new Error('Username already taken');
+        }
+        if (!response.ok) {
+            //Other errors
+            throw new Error('Sign Up Failed');
+        }
         return response.json();
     })
 
     .then(data => {
+        document.getElementById('signUpSuccessMessage').textContent = 'Registration successful!';
         console.log('Sign Up Success:', data);
         // Handle successful sign-up, redirect to sign-in, etc.
     })
-    .catch(error => console.error('Error:', error));
+    .catch(error => {
+        //display error message to user
+        document.getElementById('registrationErrorMessage').textContent = error.message;
+    });
 }
 
 //Event listeners to the forms
