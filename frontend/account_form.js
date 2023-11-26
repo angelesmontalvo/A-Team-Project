@@ -33,7 +33,7 @@ function handleSignInSubmit(event) {
     var password = SigninForm.querySelector('input[type="password"]').value;
 
     // Send data to your backend
-    fetch('http://localhost:8080/auth/login', { // Update with your backend URL
+    fetch('http://localhost:8080/auth/login', { 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
@@ -45,7 +45,9 @@ function handleSignInSubmit(event) {
     .then(data => {
         document.getElementById('signInSuccessMessage').textContent = 'Login successful!';
         console.log('Sign In Success:', data);
-        //Handle successful sign-in, store token, redirect, etc.
+
+        //Handle successful sign-in, by redirecting user to account info html
+        window.location.href = 'account_info.html';
     })
     .catch(error => console.error('Error:', error));
 }
@@ -63,7 +65,7 @@ function handleSignUpSubmit(event) {
     var password = SignupForm.querySelector('input[placeholder="Password"]').value;
 
     // Send data to your backend
-    fetch('http://localhost:8080/auth/register', { // Update with your backend URL
+    fetch('http://localhost:8080/auth/register', { 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ firstName, lastName, username, email, password })
@@ -84,7 +86,9 @@ function handleSignUpSubmit(event) {
     .then(data => {
         document.getElementById('signUpSuccessMessage').textContent = 'Registration successful!';
         console.log('Sign Up Success:', data);
-        // Handle successful sign-up, redirect to sign-in, etc.
+
+        // Handle successful sign-up,redirect to account info
+        window.location.href = 'account_info.html';
     })
     .catch(error => {
         //display error message to user

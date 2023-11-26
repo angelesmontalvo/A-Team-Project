@@ -1,0 +1,97 @@
+<!--
+    ACCOUNT INFO PAGE
+    November 25, 2023
+    Angeles Montalvo
+    This html file is used to create the page where the user is reedirected when signed it successfully
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <tile></title>
+    <link rel="stylesheet" href="style.css">
+    <script src="acc_info.js"></script>
+</head>
+
+<body>
+    <!-----------Header----------->
+    <div class="header">
+        <div class="container">
+            <!--Top Navigation bar-->
+            <div class="navbar">
+                <!--Logo-->
+                <div class="logo">
+                    <a href="index.html"><img src="img/logo.png" width="160px"></a>
+                </div>
+
+                <!--Navigation menu options: Home, Products, Account and Shopping Cart-->
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="account.html">Account</a></li>
+                    </ul>
+                </nav>
+                <!--Shopping cart icon-->
+                <a href="shopping_cart.html"><img src="img/shopcart.png" width="30px" height="30px"></a>
+            </div>
+        </div>
+    </div>
+    <!-----------END of header----------->
+
+
+
+    <!-----------Account page----------->
+    <div class="acc-info" id="content">
+        <h2>Hello!</h2>
+        <p id="welcome-message"></p>
+        <a href="index.html"><button class="button" id="start-shopping-btn">Start Shopping</button></a>
+        <button class="logoutbtn" id="logout-btn">Logout</button>
+    </div> 
+    <!-----------END of account page----------->
+
+    
+
+    <!-----------Footer----------->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <!--Website info-->
+                <div class="footer_column1">
+                    <h3>Discover</h3>
+                    <ul>
+                        <li>Product Ingredients</li>
+                        <li>Coupons</li>
+                        <li>Careers</li>
+                        <li>Help</li>  
+                    </ul>
+                </div>
+                
+                <!--Website logo-->
+                <div class="footer_column2">
+                    <img src="img/logo.png">
+                    <p>Finding New Scents For You</p>
+                </div>
+
+                <!--Social media-->
+                <div class="footer_column3">
+                    <h3>Get Connected</h3>
+                    <ul>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>TikTok</li>
+                        <li>Facebook</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="bottomNote">A-Team Project - Fall 2023</p>
+        </div>
+    </div>
+    <!-----------END of footer----------->
+
+    <!--js for toggle form-->
+    <script src="account_form.js"></script>
+</body>
+</html>
