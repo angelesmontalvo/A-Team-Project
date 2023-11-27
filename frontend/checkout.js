@@ -51,3 +51,11 @@ document.addEventListener('DOMContentLoaded', function () {
     updateOrderSummary();
 
 });
+
+//This one stores the user's email in localStorage
+document.addEventListener('DOMContentLoaded', function () {
+    var emailInput = document.querySelector('input[type="email"]');
+    emailInput.addEventListener('input', function () {
+        localStorage.setItem('userEmail', emailInput.value);
+    });
+});
