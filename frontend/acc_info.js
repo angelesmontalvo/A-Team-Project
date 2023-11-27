@@ -1,3 +1,10 @@
+/*
+    CHECK OUT UPDATE TOTAL
+    November 25, 2023
+    Angeles Montalvo
+    This javascript file is used to redirect the user to account_info.html if they sign in or sign up sucessfully in account.html
+*/
+
 document.addEventListener('DOMContentLoaded', function () {
     const welcomeMessage = document.getElementById('welcome-message');
     const startShoppingBtn = document.getElementById('start-shopping-btn');
