@@ -53,13 +53,8 @@
                 <h2>Best Sellers</h2>
                 <h1 id="prdctname">Chamomile Candle</h1>
                 <h4 id="productPrice">$9.99</h4>
-                <!--updatePrice() used to update price-->
-                <select id="sizeDropdown" onchange="updatePrice()">
-                    <option value="9.99">7 oz Single Wick Candle</option>
-                    <option value="13.99">13 oz 3-Wick Candle</option>
-                </select>
                 <!--Amount to be added to cart-->
-                <input type="number" value="1">
+                <input type="number" value="1" min="0" max="99">
                 <!--Add to cart button-->
                 <a href="" class="button">Add To Cart</a>
                 <!--Details-->
@@ -70,7 +65,6 @@
                 <li>Infused with natural essential oils</li>
             </div>
         </div>
-        <script src="prdctdetails.js"></script>
     </div>
     <!-----------END of details for a single product----------->
 
