@@ -2,9 +2,10 @@
     SORT PRODUCTS
     November 25, 2023
     Angeles Montalvo
-    This javascript file is used to sort the products from high to low or low to high based on selection
+    This javascript file is used to sort the products and dynamically create a page for a single product
 */
 
+//Function used to sort the products based on user slection
 function sortProducts() {
     var selectElement = document.getElementById('sort-select');
     var selectedOption = selectElement.options[selectElement.selectedIndex].text;
