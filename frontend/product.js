@@ -24,22 +24,31 @@ function sortProducts() {
             var priceB = parseFloat(b.querySelector('p').innerText.slice(1));
             return priceB - priceA;
         });
+    } else if (selectedOption === 'Sort by Default') {
+        // If "Sort by Default" is selected, revert to the original order
+        products.sort(function (a, b) {
+            return a.getAttribute('data-product-id') - b.getAttribute('data-product-id');
+        });
     }
-
-    // Create a new document fragment
-    var fragment = document.createDocumentFragment();
-
-    // Append the sorted products to the fragment
-    products.forEach(function (product) {
-        fragment.appendChild(product.cloneNode(true));
-    });
 
     // Clear the current product container
     productContainer.innerHTML = '';
 
-    // Append the sorted products back to the container
-    productContainer.appendChild(fragment);
+    // Append the sorted products back to the container in rows
+    var row = document.createElement('div');
+    row.className = 'row';
+
+    products.forEach(function (product, index) {
+        row.appendChild(product.cloneNode(true));
+
+        // Check if 4 products are added or if it's the last product
+        if ((index + 1) % 4 === 0 || index === products.length - 1) {
+            productContainer.appendChild(row.cloneNode(true));
+            row.innerHTML = ''; // Clear the row for the next set of products
+        }
+    });
 }
+
 
 
 //Function to dynamically create a page for a single product
