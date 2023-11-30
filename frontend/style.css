@@ -315,6 +315,31 @@ select:focus {
     color: #fff;
 }
 
+.col4 input {
+    width: 40px;
+    height: 30px;
+    padding-left: 13px;
+    font-size: 15px;
+    margin-top: 10px;
+    border: 1px solid #b39200;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.col4 .button {
+    background-color: #cfb545;
+    color: white;
+    padding: 8px 13px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin-top: 10px; 
+}
+
+.col4 .button:hover {
+    background-color: #9a7e01;
+}
+
 /*-----------Single Product Details Page-----------*/
 .col2 {
     flex-basis: 50%;
