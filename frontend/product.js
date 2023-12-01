@@ -47,43 +47,53 @@ function sortProducts() {
             productContainer.appendChild(row.cloneNode(true));
             row.innerHTML = ''; // Clear the row for the next set of products
         }
+    }); 
+
+
+    // Assign unique class names for quantity input
+    var quantityInputs = productContainer.getElementsByClassName('quantityInput');
+
+    // Iterate through quantityInputs to get values
+    quantityInputs.forEach(function (quantityInput) {
+        var quantity = quantityInput.value;
     });
 
-
-
-    document.querySelectorAll('.button[id="addToCartBtn"]').forEach(function (button) {
+    // Add event listeners for "Add to Cart" buttons
+    document.querySelectorAll('.button.addToCartBtn').forEach(function (button, index) {
         button.addEventListener('click', function () {
-            var productId = button.parentElement.getAttribute('data-product-id');
-            var quantity = button.parentElement.querySelector('#quantityInput').value;
+            var productId = products[index].getAttribute('data-product-id');
+            var quantity = quantityInputs[index].value;
 
-            // Send a request to the server to add the product to the cart
-            addToCart(productId, quantity);
-        });
+        // Send a request to the server to add the product to the cart
+        addToCart(productId, quantity);
     });
+});
 
-    //function to handle the API request
-    function addToCart(productId, quantity) {
-        var data = {
-            productId: productId,
-            quantity: quantity
-        };
 
-        fetch('/api/addToCart', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Handle the response (e.g., update the UI)
-            console.log('Product added to cart:', data);
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
-}
+}    
 
+
+//function to handle the API request
+function addToCart(productId, quantity) {
+    var data = {
+        productId: productId,
+        quantity: quantity
+    };
+
+    fetch('/api/addToCart', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Handle the response (e.g., update the UI)
+        console.log('Product added to cart:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
 }
 

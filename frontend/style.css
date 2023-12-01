@@ -334,6 +334,8 @@ select:focus {
     display: inline-block;
     font-size: 12px;
     margin-top: 10px; 
+    border: none;
+    cursor: pointer;
 }
 
 .col4 .button:hover {
