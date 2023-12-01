@@ -493,6 +493,10 @@ th:last-child {
     text-align: right;
 }
 
+.cart_info .prodname {
+    font-weight: bold;
+}
+
 /*-----------Account Page-----------*/
 
 .account_page {

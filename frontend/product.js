@@ -87,13 +87,14 @@ function addToCart(productId, quantity) {
         },
         body: JSON.stringify(data),
     })
-    .then(response => response.json())
-    .then(data => {
-        // Handle the response (e.g., update the UI)
-        console.log('Product added to cart:', data);
+    .then(response => {
+        if (response.ok) {
+            console.log('Product added to cart');
+            fetchCart(); 
+        } else {
+            console.error('Failed to add product to cart');
+        }
     })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-}
+        .catch(error => console.error('Error:', error));
+    }
 
