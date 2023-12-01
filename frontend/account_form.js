@@ -80,6 +80,7 @@ function handleSignUpSubmit(event) {
             //Other errors
             throw new Error('Sign Up Failed');
         }
+        console.log('Sign Up Response:', response);
         return response.json();
     })
 
