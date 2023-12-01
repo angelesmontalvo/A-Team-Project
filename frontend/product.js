@@ -80,7 +80,7 @@ function addToCart(productId, quantity) {
         quantity: quantity
     };
 
-    fetch('/api/addToCart', {
+    fetch('/cart/items', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
