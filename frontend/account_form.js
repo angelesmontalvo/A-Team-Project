@@ -39,7 +39,13 @@ function handleSignInSubmit(event) {
         body: JSON.stringify({ username, password })
     })
     .then(response => {
-        if (!response.ok) throw new Error('Login failed');
+        if (!response.ok) {
+            if (response.status === 401) {
+                throw new Error('Invalid username or password');
+            } else {
+                throw new Error('Login failed');
+            }
+        }
         return response.json();
     })
     .then(data => {
