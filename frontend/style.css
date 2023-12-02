@@ -499,6 +499,10 @@ th:last-child {
 
 /*-----------Account Page-----------*/
 
+.passwordreq {
+    font-size: 9px;
+}
+
 .account_page {
     padding: 50px 0;
     background: radial-gradient(#fff, #ede4cd);
@@ -566,7 +570,7 @@ form a {
 
 #SignupForm {
     left: 0;
-    margin-top: -50px;
+    margin-top: -65px;
 }
 
 #Indicator {
