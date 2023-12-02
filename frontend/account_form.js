@@ -84,9 +84,6 @@ function handleSignUpSubmit(event) {
         if (response.status === 409) {
             //User already exists
             throw new Error('Username already taken');
-        } else if (!response.ok) {
-            //Other errors
-            throw new Error('Sign Up Failed');
         }
         return response.json();
     })
