@@ -64,6 +64,9 @@ function handleSignUpSubmit(event) {
     var email = SignupForm.querySelector('input[placeholder="Email"]').value;
     var password = SignupForm.querySelector('input[placeholder="Password"]').value;
 
+    // Log the extracted values
+    console.log('Form Data:', { firstName, lastName, username, email, password });
+
     // Send data to your backend
     fetch('http://localhost:8080/auth/register', { 
         method: 'POST',
@@ -75,21 +78,22 @@ function handleSignUpSubmit(event) {
         if (response.status === 409) {
             //User already exists
             throw new Error('Username already taken');
-        }
-        if (!response.ok) {
+        } else if (!response.ok) {
             //Other errors
             throw new Error('Sign Up Failed');
         }
-        console.log('Sign Up Response:', response);
         return response.json();
     })
 
     .then(data => {
+        //Display an alert indicating susccesful sign-up
+        window.alert('Registration sucessful!');
+
         document.getElementById('signUpSuccessMessage').textContent = 'Registration successful!';
         console.log('Sign Up Success:', data);
 
-        // Handle successful sign-up,redirect to account info
-        window.location.href = 'account_info.html';
+        //close the success modal
+        closeSuccessModal();
     })
     .catch(error => {
         //display error message to user
@@ -100,3 +104,8 @@ function handleSignUpSubmit(event) {
 //Event listeners to the forms
 SigninForm.addEventListener('submit', handleSignInSubmit);
 SignupForm.addEventListener('submit', handleSignUpSubmit);
+
+// Function to close the success modal
+function closeSuccessModal() {
+    document.getElementById('successModal').style.display = 'none';
+}
