@@ -90,7 +90,7 @@ function handleSignUpSubmit(event) {
 
     .then(data => {
         //Display an alert indicating susccesful sign-up
-        window.alert('Registration sucessful!');
+        signUpSuccessMessage.innerHTML = "Sign up successfully!";
 
         document.getElementById('signUpSuccessMessage').textContent = 'Registration successful!';
         console.log('Sign Up Success:', data);
