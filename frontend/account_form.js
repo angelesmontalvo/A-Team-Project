@@ -81,10 +81,10 @@ function handleSignUpSubmit(event) {
     })
 
     .then(response => {
-        if (response.status === 409) {
+       /* if (response.status === 409) {
             //User already exists
-            throw new Error('Username already taken');
-        }
+           throw new Error('Username already taken');
+        }*/
         return response.json();
     })
 
