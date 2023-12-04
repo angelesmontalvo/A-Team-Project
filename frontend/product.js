@@ -72,6 +72,16 @@ function sortProducts() {
 
 }    
 
+// Add event listeners for "Add to Cart" buttons
+document.querySelectorAll('.button.addToCartBtn').forEach(function (button, index) {
+    button.addEventListener('click', function () {
+        var productId = products[index].getAttribute('data-product-id');
+        var quantity = quantityInputs[index].value;
+
+        // Send a request to the server to add the product to the cart
+        addToCart(productId, quantity);
+    });
+});
 
 //function to handle the API request
 function addToCart(productId, quantity) {
@@ -90,6 +100,7 @@ function addToCart(productId, quantity) {
     .then(response => {
         if (response.ok) {
             console.log('Product added to cart');
+            //Update the cart 
             fetchCart(); 
         } else {
             console.error('Failed to add product to cart');
