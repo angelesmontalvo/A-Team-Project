@@ -80,13 +80,13 @@ function handleSignUpSubmit(event) {
         body: JSON.stringify({ firstName, lastName, username, email, password })
     })
 
-    .then(response => {
-       /* if (response.status === 409) {
+    /*.then(response => {
+        if (response.status === 409) {
             //User already exists
            throw new Error('Username already taken');
-        }*/
+        }
         return response.json();
-    })
+    })*/
 
     .then(data => {
         //Display an alert indicating susccesful sign-up
