@@ -98,10 +98,10 @@ function handleSignUpSubmit(event) {
         //close the success modal
         closeSuccessModal();
     })
-    .catch(error => {
+    /*.catch(error => {
         //display error message to user
         document.getElementById('registrationErrorMessage').textContent = error.message;
-    });
+    });*/
 }
 
 //Event listeners to the forms
