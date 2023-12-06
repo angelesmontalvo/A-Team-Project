@@ -23,6 +23,17 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('SignupForm not found');
     }
 
+    // Add click event listeners to the spans
+    var signInSpan = document.querySelector('.form_button span:nth-child(1)');
+    var signUpSpan = document.querySelector('.form_button span:nth-child(2)');
+
+    if (signInSpan && signUpSpan) {
+        signInSpan.addEventListener('click', signin);
+        signUpSpan.addEventListener('click', signup);
+    } else {
+        console.log('Sign In or Sign Up span not found');
+    }
+
     //'signup()': responsible for transitioning to the sign up form when clicking 'sign up'
     function signup() {
         SignupForm.style.transform = "translateX(0px)";
@@ -112,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Sign Up Success:', data);
 
             //close the success modal
-            closeSuccessModal();
+            setTimeout(closeSuccessModal, 3000);
         })
         /*.catch(error => {
             //display error message to user
