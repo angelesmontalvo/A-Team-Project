@@ -3,13 +3,26 @@ document.addEventListener('DOMContentLoaded', function() {
 });
     
 function fetchCart() {
-    fetch('http://localhost:8080/cart')
-        .then(response => response.json())
+    const backendUrl = 'http://localhost:8080';
+
+    // Include authentication token if required
+    const headers = {
+        'Content-Type': 'application/json',
+        // 'Authorization': 'Bearer ' + yourAuthToken, // Uncomment and replace with your actual token if needed
+    };
+
+    fetch(backendUrl + '/cart', { headers: headers })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(cartData => {
             updateCartUI(cartData);
-    })
-    .catch(error => console.error('Error:', error));
-    }
+        })
+        .catch(error => console.error('Error fetching cart:', error));
+}
   
     
 function updateCartUI(cartData) {
