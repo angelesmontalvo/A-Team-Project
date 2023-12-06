@@ -5,8 +5,13 @@
     This javascript file is used to sort the products and dynamically create a page for a single product
 */
 
+// Import updateCartItemSubtotal and fetchCart from cart.js
+import { updateCartItemSubtotal } from './cart.js';
+import { fetchCart } from './cart.js';
+
 //Function used to sort the products based on user slection
 function sortProducts() {
+
     console.log('sortproducts function called');
     var selectElement = document.getElementById('sort-select');
     var selectedOption = selectElement.options[selectElement.selectedIndex].text;

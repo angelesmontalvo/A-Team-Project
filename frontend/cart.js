@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchCart();
 });
     
-function fetchCart() {
+export function fetchCart() {
     const backendUrl = 'http://localhost:8080';
 
     //Retrive the token from local storage
@@ -115,7 +115,7 @@ quantityInputs.forEach(function (quantityInput) {
     });
 });
 
-function updateCartItemSubtotal(product, newQuantity) {
+export function updateCartItemSubtotal(product, newQuantity) {
     // Send a request to the server to update the cart item quantity
     const productId = product.getAttribute('data-product-id');
     const authToken = localStorage.getItem('token');
