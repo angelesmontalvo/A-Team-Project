@@ -5,10 +5,13 @@ document.addEventListener('DOMContentLoaded', function() {
 function fetchCart() {
     const backendUrl = 'http://localhost:8080';
 
+    //Retrive the token from local storage
+    const authToken = localStorage.getItem('token');
+
     // Include authentication token if required
     const headers = {
         'Content-Type': 'application/json',
-        // 'Authorization': 'Bearer ' + yourAuthToken, // Uncomment and replace with your actual token if needed
+        'Authorization': 'Bearer ' + authToken,
     };
 
     fetch(backendUrl + '/cart', { headers: headers })
@@ -112,10 +115,12 @@ quantityInputs.forEach(function (quantityInput) {
 function updateCartItemSubtotal(product, newQuantity) {
     // Send a request to the server to update the cart item quantity
     const productId = product.getAttribute('data-product-id');
+    const authToken = localStorage.getItem('token');
     fetch('http://localhost:8080/cart/items', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
+            'Authorization': 'Bearer' + authToken,
         },
         body: JSON.stringify({ productId, quantity: newQuantity }),
     })

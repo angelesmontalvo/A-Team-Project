@@ -79,13 +79,20 @@ function addToCart(productId, quantity) {
         quantity: quantity
     };
 
+    //Retrive the token from local storage
+    const authToken = localStorage.getItem('token');
+
+    //Authentication token:
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + authToken,
+    };
+
     console.log('Adding to cart:', data); //console log message
 
     fetch('http://localhost:8080/cart/items', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
+        headers: headers,
         body: JSON.stringify(data),
     })
     .then(response => {
