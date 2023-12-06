@@ -34,8 +34,11 @@ function updateCartUI(cartData) {
 
     // Example: Update the subtotal
     const totalSubtotalElement = document.getElementById('total_subtotal');
-    totalSubtotalElement.textContent = cartData.subtotal.toFixed(2);
 
+    if (cartData.subtotal !== undefined) {
+        totalSubtotalElement.textContent = cartData.subtotal.toFixed(2);
+    }
+    
     // Example: Update the cart items
     const cartTable = document.getElementById('cart-table');
     cartTable.innerHTML = '';  // Clear existing content
