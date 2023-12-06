@@ -38,10 +38,10 @@ function updateCartUI(cartData) {
     if (cartData.subtotal !== undefined) {
         totalSubtotalElement.textContent = cartData.subtotal.toFixed(2);
     }
-    
+
     // Example: Update the cart items
     const cartTable = document.getElementById('cart-table');
-    cartTable.innerHTML = '';  // Clear existing content
+    console.log('cartTable:', cartTable);
 
     cartData.items.forEach(item => {
         const cartItemElement = createCartItemElement(item);
