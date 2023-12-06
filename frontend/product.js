@@ -93,7 +93,7 @@ function addToCart(productId, quantity) {
 
     console.log('Adding to cart:', data); //console log message
 
-    fetch('/cart/items', {
+    fetch('http://localhost:8080/cart/items', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
