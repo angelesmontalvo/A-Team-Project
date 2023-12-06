@@ -83,11 +83,17 @@ function sortProducts() {
     });
 
     // Add event listeners for "Add to Cart" buttons
-    document.querySelectorAll('.button.addToCartBtn').forEach(function (button, index) {
+    document.querySelectorAll('.button.addToCartBtn').forEach(function (button) {
         button.addEventListener('click', function () {
             console.log('button clicked'); //console log message
-            var productId = products[index].getAttribute('data-product-id');
-            var quantity = quantityInputs[index].value;
+
+            // Find the closest product container
+            var productContainer = button.closest('.col4');
+            var productId = productContainer.getAttribute('data-product-id');
+            
+            // Find the quantity input within the product container
+            var quantityInput = productContainer.querySelector('.quantityInput');
+            var quantity = quantityInput.value
 
             // Send a request to the server to add the product to the cart
             addToCart(productId, quantity);
@@ -100,32 +106,40 @@ function sortProducts() {
 
 //function to handle the API request
 function addToCart(productId, quantity) {
-    var data = {
-        productId: productId,
-        quantity: quantity
-    };
-
     //Retrive the token from local storage
     const authToken = localStorage.getItem('token');
 
-    //Authentication token:
-    const headers = {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + authToken,
+    if (!authToken) {
+        console.error("User is not logged in");
+
+        //Redirect to login page if user is not logged in
+        window.location.href = 'account.html';
+
+        return;
+    }
+
+    const data = {
+        productId: productId,
+        quantity: quantity
     };
 
     console.log('Adding to cart:', data); //console log message
 
     fetch('http://localhost:8080/cart/items', {
         method: 'POST',
-        headers: headers,
+        headers:{
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + authToken
+        },
         body: JSON.stringify(data),
     })
     .then(response => {
         if (response.ok) {
             console.log('Product added to cart'); //console log message
-            //Update the cart 
-            window.location.href = 'shopping_cart.html';
+            //Redirect user to updated shopping cart
+            setTimeout(() => {
+                window.location.href = 'shopping_cart.html';
+            }, 1500);
         } else {
             console.error('Failed to add product to cart'); //console log message
         }
