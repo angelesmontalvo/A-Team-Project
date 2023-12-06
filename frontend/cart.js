@@ -105,6 +105,9 @@ window.addEventListener('load', function () {
     fetchCart();
 });
 
+// Define quantityInputs here (assuming you have a collection of quantity inputs)
+const quantityInputs = document.querySelectorAll('.quantity-input');
+
 // Add event listener for quantity changes
 quantityInputs.forEach(function (quantityInput) {
     quantityInput.addEventListener('input', function () {
