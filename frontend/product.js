@@ -75,6 +75,7 @@ function sortProducts() {
 // Add event listeners for "Add to Cart" buttons
 document.querySelectorAll('.button.addToCartBtn').forEach(function (button, index) {
     button.addEventListener('click', function () {
+        console.log('button clicked'); //console log message
         var productId = products[index].getAttribute('data-product-id');
         var quantity = quantityInputs[index].value;
 
@@ -90,6 +91,8 @@ function addToCart(productId, quantity) {
         quantity: quantity
     };
 
+    console.log('Adding to cart:', data); //console log message
+
     fetch('/cart/items', {
         method: 'POST',
         headers: {
@@ -99,11 +102,11 @@ function addToCart(productId, quantity) {
     })
     .then(response => {
         if (response.ok) {
-            console.log('Product added to cart');
+            console.log('Product added to cart'); //console log message
             //Update the cart 
             fetchCart(); 
         } else {
-            console.error('Failed to add product to cart');
+            console.error('Failed to add product to cart'); //console log message
         }
     })
         .catch(error => console.error('Error:', error));
