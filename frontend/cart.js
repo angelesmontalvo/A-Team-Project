@@ -120,7 +120,7 @@ function updateCartItemSubtotal(product, newQuantity) {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer' + authToken,
+            'Authorization': 'Bearer ' + authToken,
         },
         body: JSON.stringify({ productId, quantity: newQuantity }),
     })

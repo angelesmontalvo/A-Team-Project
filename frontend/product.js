@@ -40,8 +40,28 @@ function sortProducts() {
     var row = document.createElement('div');
     row.className = 'row';
 
+    //Iterate through products
     products.forEach(function (product, index) {
-        row.appendChild(product.cloneNode(true));
+        var clonedProduct = product.cloneNode(true);
+        row.appendChild(clonedProduct);
+
+        // Assign unique class names for quantity input
+        var quantityInput = clonedProduct.querySelector('.quantityInput');
+
+        // Add event listener for quantity changes
+        quantityInput.addEventListener('input', function () {
+            updateCartItemSubtotal(clonedProduct, quantityInput.value);
+        });
+
+        // Add event listener for "Add to Cart" button
+        clonedProduct.querySelector('.button.addToCartBtn').addEventListener('click', function () {
+            console.log('button clicked'); //console log message
+            var productId = clonedProduct.getAttribute('data-product-id');
+            var quantity = quantityInput.value;
+
+            // Send a request to the server to add the product to the cart
+            addToCart(productId, quantity);
+        });
 
         // Check if 4 products are added or if it's the last product
         if ((index + 1) % 4 === 0 || index === products.length - 1) {
@@ -54,9 +74,12 @@ function sortProducts() {
     // Assign unique class names for quantity input
     var quantityInputs = Array.from(productContainer.getElementsByClassName('quantityInput'));
 
-    // Iterate through quantityInputs to get values
+    // Add event listener for quantity changes
     quantityInputs.forEach(function (quantityInput) {
-        var quantity = quantityInput.value;
+        quantityInput.addEventListener('input', function () {
+            // Note: Use the appropriate logic in updateCartItemSubtotal
+            updateCartItemSubtotal(products[index], quantityInput.value);
+        });
     });
 
     // Add event listeners for "Add to Cart" buttons
@@ -70,6 +93,9 @@ function sortProducts() {
             addToCart(productId, quantity);
         });
     });
+
+    //Fetch and update cart
+    fetchCart();
 }  
 
 //function to handle the API request
@@ -105,5 +131,5 @@ function addToCart(productId, quantity) {
         }
     })
         .catch(error => console.error('Error:', error));
-    }
+}
 

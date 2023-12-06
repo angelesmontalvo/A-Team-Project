@@ -49,6 +49,8 @@ function handleSignInSubmit(event) {
         return response.json();
     })
     .then(data => {
+        console.log('Response Data:', data);
+        
         //Assumming 'data' contains the JWT token
         localStorage.setItem('token', data.token);
         document.getElementById('signInSuccessMessage').textContent = 'Login successful!';
