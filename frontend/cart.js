@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
     
 function fetchCart() {
-    fetch('/cart')
+    fetch('http://localhost:8080/cart')
         .then(response => response.json())
         .then(cartData => {
             updateCartUI(cartData);
@@ -99,7 +99,7 @@ quantityInputs.forEach(function (quantityInput) {
 function updateCartItemSubtotal(product, newQuantity) {
     // Send a request to the server to update the cart item quantity
     const productId = product.getAttribute('data-product-id');
-    fetch('/cart/items', {
+    fetch('http://localhost:8080/cart/items', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

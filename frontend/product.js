@@ -7,6 +7,7 @@
 
 //Function used to sort the products based on user slection
 function sortProducts() {
+    console.log('sortproducts function called');
     var selectElement = document.getElementById('sort-select');
     var selectedOption = selectElement.options[selectElement.selectedIndex].text;
 
@@ -51,7 +52,7 @@ function sortProducts() {
 
 
     // Assign unique class names for quantity input
-    var quantityInputs = productContainer.getElementsByClassName('quantityInput');
+    var quantityInputs = Array.from(productContainer.getElementsByClassName('quantityInput'));
 
     // Iterate through quantityInputs to get values
     quantityInputs.forEach(function (quantityInput) {
@@ -61,28 +62,15 @@ function sortProducts() {
     // Add event listeners for "Add to Cart" buttons
     document.querySelectorAll('.button.addToCartBtn').forEach(function (button, index) {
         button.addEventListener('click', function () {
+            console.log('button clicked'); //console log message
             var productId = products[index].getAttribute('data-product-id');
             var quantity = quantityInputs[index].value;
 
-        // Send a request to the server to add the product to the cart
-        addToCart(productId, quantity);
+            // Send a request to the server to add the product to the cart
+            addToCart(productId, quantity);
+        });
     });
-});
-
-
-}    
-
-// Add event listeners for "Add to Cart" buttons
-document.querySelectorAll('.button.addToCartBtn').forEach(function (button, index) {
-    button.addEventListener('click', function () {
-        console.log('button clicked'); //console log message
-        var productId = products[index].getAttribute('data-product-id');
-        var quantity = quantityInputs[index].value;
-
-        // Send a request to the server to add the product to the cart
-        addToCart(productId, quantity);
-    });
-});
+}  
 
 //function to handle the API request
 function addToCart(productId, quantity) {
