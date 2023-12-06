@@ -10,12 +10,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const startShoppingBtn = document.getElementById('start-shopping-btn');
     const logoutBtn = document.getElementById('logout-btn');
 
-    // Check if the user is logged in (you can use a token or session)
-    const isLoggedIn = true; // Replace with your actual check
+    // Check if the user is logged in
+    const authToken = localStorage.getItem('token');
+    const isLoggedIn = authToken !== null; 
 
     if (isLoggedIn) {
         // Fetch user information from the backend (replace with actual API call)
-        fetch('/api/user')
+        fetch('http://localhost:8080/auth/me', {
+            headers: {
+                'Authorization': 'Bearer ' + authToken,
+                'Content-Type': 'application/json',
+            }
+        })
             .then(response => response.json())
             .then(user => {
                 welcomeMessage.textContent = `Hello, ${user.name}`;
@@ -23,16 +29,21 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(error => console.error('Error fetching user information:', error));
 
         startShoppingBtn.addEventListener('click', function () {
-            // Implement shopping logic here
+            // Implement shopping logic
             console.log('Start shopping');
         });
 
         logoutBtn.addEventListener('click', function () {
-            // Implement logout logic here (e.g., invalidate session/token)
+            // Implement logout logic (e.g., invalidate session/token)
             console.log('Logout');
+            localStorage.removeItem('token');
+            console.log('Logout');
+
+            //Redirect user to account sign-in  html
+            window.location.href = 'account_form.html';
         });
     } else {
         // Redirect to the login page if not logged in
-        window.location.href = '/login.html'; // Replace with your actual login page
+        window.location.href = 'account_form.html';
     }
 });
