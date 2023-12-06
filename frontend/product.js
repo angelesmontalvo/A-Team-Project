@@ -5,13 +5,8 @@
     This javascript file is used to sort the products and dynamically create a page for a single product
 */
 
-// Import updateCartItemSubtotal and fetchCart from cart.js
-import { updateCartItemSubtotal } from './cart.js';
-import { fetchCart } from './cart.js';
-
 //Function used to sort the products based on user slection
 function sortProducts() {
-
     console.log('sortproducts function called');
     var selectElement = document.getElementById('sort-select');
     var selectedOption = selectElement.options[selectElement.selectedIndex].text;
@@ -80,7 +75,7 @@ function sortProducts() {
     var quantityInputs = Array.from(productContainer.getElementsByClassName('quantityInput'));
 
     // Add event listener for quantity changes
-    quantityInputs.forEach(function (quantityInput) {
+    quantityInputs.forEach(function (quantityInput, index) {
         quantityInput.addEventListener('input', function () {
             // Note: Use the appropriate logic in updateCartItemSubtotal
             updateCartItemSubtotal(products[index], quantityInput.value);
@@ -130,11 +125,10 @@ function addToCart(productId, quantity) {
         if (response.ok) {
             console.log('Product added to cart'); //console log message
             //Update the cart 
-            fetchCart(); 
+            window.location.href = 'shopping_cart.html';
         } else {
             console.error('Failed to add product to cart'); //console log message
         }
     })
-        .catch(error => console.error('Error:', error));
+    .catch(error => console.error('Error:', error));
 }
-
