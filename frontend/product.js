@@ -77,8 +77,11 @@ function sortProducts() {
     // Add event listener for quantity changes
     quantityInputs.forEach(function (quantityInput, index) {
         quantityInput.addEventListener('input', function () {
-            // Note: Use the appropriate logic in updateCartItemSubtotal
-            updateCartItemSubtotal(products[index], quantityInput.value);
+            var productContainer = quantityInput.closest('.col4');
+            var productId = productContainer.getAttribute('data-product-id');
+            var quantity = quantityInput.value;    
+            
+            addToCart(productId, quantity);
         });
     });
 
@@ -100,8 +103,6 @@ function sortProducts() {
         });
     });
 
-    //Fetch and update cart
-    fetchCart();
 }  
 
 //function to handle the API request
