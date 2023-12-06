@@ -115,7 +115,8 @@ const quantityInputs = document.querySelectorAll('.quantity-input');
 // Add event listener for quantity changes
 quantityInputs.forEach(function (quantityInput) {
     quantityInput.addEventListener('input', function () {
-        updateCartItemSubtotal(products[index], quantityInput.value);
+        var productContainer = quantityInput.closest('.col4');
+        updateCartItemSubtotal(productContainer, quantityInput.value);    
     });
 });
 

@@ -137,9 +137,7 @@ function addToCart(productId, quantity) {
         if (response.ok) {
             console.log('Product added to cart'); //console log message
             //Redirect user to updated shopping cart
-            setTimeout(() => {
-                window.location.href = 'shopping_cart.html';
-            }, 1500);
+            window.location.href = 'shopping_cart.html';
         } else {
             console.error('Failed to add product to cart'); //console log message
         }
