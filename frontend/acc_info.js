@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const isLoggedIn = authToken !== null; 
 
     if (isLoggedIn) {
-        // Fetch user information from the backend (replace with actual API call)
+        // Fetch user information from the backend
         fetch('http://localhost:8080/auth/me', {
             headers: {
                 'Authorization': 'Bearer ' + authToken,
@@ -34,16 +34,16 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         logoutBtn.addEventListener('click', function () {
-            // Implement logout logic (e.g., invalidate session/token)
+            // Implement logout logic
             console.log('Logout');
             localStorage.removeItem('token');
             console.log('Logout');
 
-            //Redirect user to account sign-in  html
-            window.location.href = 'account_form.html';
+            //Redirect user to account sign-in html
+            window.location.href = 'account.html';
         });
     } else {
         // Redirect to the login page if not logged in
-        window.location.href = 'account_form.html';
+        window.location.href = 'account.html';
     }
 });

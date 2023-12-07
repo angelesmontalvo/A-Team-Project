@@ -8,10 +8,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"> 
     <title> </title>
     <link rel="stylesheet" href="style.css">
-    <script src="cart.js"></script>
 </head>
 
 <body>
@@ -24,7 +23,6 @@
                 <div class="logo">
                     <a href="index.html"><img src="img/logo.png" width="160px"></a>
                 </div>
-
                 <!--Navigation menu options: Home, Products, Account and Shopping Cart-->
                 <nav>
                     <ul>
@@ -40,36 +38,32 @@
     </div>
     <!-----------END of header----------->
 
-
-    <!-----------Shopping cart details----------->
-    <div class="smallcontainer cart_page">
-
-        <table>
+    <!-----------Shopping cart details-----------> 
+    <div class="small-container cart-page"></div>
+    <table id="cart-table">
+        
+        <thead>
             <tr>
-                <th>Product</th>
-                <th>Quantity</th>
-                <th>Subtotal</th>
+                <th scope="col">Product</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Subtotal</th>
+                <th scope="col">Remove</th>
+            </tr> 
+        </thead>
+        <tbody id="cart-table-body">
+            <!-- Cart items will be added here -->
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Total</td>
+                <td id="total_subtotal"colspan="3">$0.00</td>
             </tr>
-            <!--Cart items will be added here-->
-        </table>
-
-        <div id="cart-table"> 
-            <!-- This div will hold the cart items --> 
-        </div>
-
-        <div class="cart_subtotal">
-            <table>
-                <tr>
-                    <td>Subtotal</td>
-                    <td id="total_subtotal">0.00</td>
-                </tr>
-            </table>
-        </div>
+        </tfoot>
+    </table>
 
         <div class="check-out-button">
-            <a href="check_out.html"><button type="submit" class="button">Check Out</button></a>
+            <button type="button" class="button" onclick="confirmCheckout()">Check Out</button>
         </div>
-
     </div>
 
 
@@ -109,6 +103,15 @@
             <p class="bottomNote">A-Team Project - Fall 2023</p>
         </div>
     </div>
-    <!-----------END of footer----------->
+    <!-----------END of footer-----------> 
+    <script src="cart.js"></script> 
+    <script>
+        // Confirm checkout function
+        function confirmCheckout() {
+            if (confirm('Are you ready to proceed to checkout?')) {
+                window.location.href = 'check_out.html'; // navigate to the checkout page
+            }
+        }
+    </script>
 </body>
 </html>

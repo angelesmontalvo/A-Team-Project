@@ -1,147 +1,218 @@
 /*
-    SORT PRODUCTS
+    PRODUCTS JS PAGE
     November 25, 2023
     Angeles Montalvo
-    This javascript file is used to sort the products and dynamically create a page for a single product
+    This javascript file is used to dynamically create the products page by fetching the products from the database
 */
 
-//Function used to sort the products based on user slection
-function sortProducts() {
-    console.log('sortproducts function called');
-    var selectElement = document.getElementById('sort-select');
-    var selectedOption = selectElement.options[selectElement.selectedIndex].text;
 
-    var productContainer = document.getElementById('product-container');
-    var products = Array.from(productContainer.getElementsByClassName('col4'));
+const backendApi = 'http://localhost:8080/product';
 
-    if (selectedOption === 'Price Low to High') {
-        products.sort(function (a, b) {
-            var priceA = parseFloat(a.querySelector('p').innerText.slice(1));
-            var priceB = parseFloat(b.querySelector('p').innerText.slice(1));
-            return priceA - priceB;
-        });
-    } else if (selectedOption === 'Price High to Low') {
-        products.sort(function (a, b) {
-            var priceA = parseFloat(a.querySelector('p').innerText.slice(1));
-            var priceB = parseFloat(b.querySelector('p').innerText.slice(1));
-            return priceB - priceA;
-        });
-    } else if (selectedOption === 'Sort by Default') {
-        // If "Sort by Default" is selected, revert to the original order
-        products.sort(function (a, b) {
-            return a.getAttribute('data-product-id') - b.getAttribute('data-product-id');
-        });
+document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('productId');
+
+    if (productId) {
+        fetchAndDisplayProductDetails(productId);
+    } else {
+        // If not on a product detail page, then display all products
+        fetchAndDisplayProducts();
     }
+});  
 
-    // Clear the current product container
-    productContainer.innerHTML = '';
 
-    // Append the sorted products back to the container in rows
-    var row = document.createElement('div');
-    row.className = 'row';
-
-    //Iterate through products
-    products.forEach(function (product, index) {
-        var clonedProduct = product.cloneNode(true);
-        row.appendChild(clonedProduct);
-
-        // Assign unique class names for quantity input
-        var quantityInput = clonedProduct.querySelector('.quantityInput');
-
-        // Add event listener for quantity changes
-        quantityInput.addEventListener('input', function () {
-            updateCartItemSubtotal(clonedProduct, quantityInput.value);
-        });
-
-        // Add event listener for "Add to Cart" button
-        clonedProduct.querySelector('.button.addToCartBtn').addEventListener('click', function () {
-            console.log('button clicked'); //console log message
-            var productId = clonedProduct.getAttribute('data-product-id');
-            var quantity = quantityInput.value;
-
-            // Send a request to the server to add the product to the cart
-            addToCart(productId, quantity);
-        });
-
-        // Check if 4 products are added or if it's the last product
-        if ((index + 1) % 4 === 0 || index === products.length - 1) {
-            productContainer.appendChild(row.cloneNode(true));
-            row.innerHTML = ''; // Clear the row for the next set of products
+function fetchAndDisplayProducts() {
+    fetch(backendApi)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
-    }); 
-
-
-    // Assign unique class names for quantity input
-    var quantityInputs = Array.from(productContainer.getElementsByClassName('quantityInput'));
-
-    // Add event listener for quantity changes
-    quantityInputs.forEach(function (quantityInput, index) {
-        quantityInput.addEventListener('input', function () {
-            var productContainer = quantityInput.closest('.col4');
-            var productId = productContainer.getAttribute('data-product-id');
-            var quantity = quantityInput.value;    
-            
-            addToCart(productId, quantity);
+        return response.json();
+    })
+    .then(products => {
+        const productContainer = document.getElementById('product-container');
+        productContainer.innerHTML = ''; // Clear the container
+        products.forEach(product => {
+            productContainer.appendChild(createProductElement(product));
         });
+        attachAddToCartListeners();
+    })
+    .catch(error => {
+        console.error('Error fetching products:', error);
+    });
+}   
+function createProductElement(product) {
+    const productDiv = document.createElement('div');
+    productDiv.className = 'col4';
+    productDiv.setAttribute('data-product-id', product.id);
+    productDiv.addEventListener('click', () => {
+        window.location.href = `product_details.html?productId=${product.id}`;
     });
 
-    // Add event listeners for "Add to Cart" buttons
-    document.querySelectorAll('.button.addToCartBtn').forEach(function (button) {
-        button.addEventListener('click', function () {
-            console.log('button clicked'); //console log message
+    // Setting the innerHTML of the product div
+    productDiv.innerHTML = `
+        <img src="img/${product.image}" width="200px">
+        <h4>${product.name}</h4>
+        <p>$${product.price.toFixed(2)}</p>
+        <div class="quantitySection">
+            <input type="number" class="quantityInput" value="1" min="1" max="99">
+        </div>
+        <button class="button addToCartBtn">Add To Cart</button>
+    `;
 
-            // Find the closest product container
-            var productContainer = button.closest('.col4');
-            var productId = productContainer.getAttribute('data-product-id');
-            
-            // Find the quantity input within the product container
-            var quantityInput = productContainer.querySelector('.quantityInput');
-            var quantity = quantityInput.value
-
-            // Send a request to the server to add the product to the cart
-            addToCart(productId, quantity);
-        });
+    // Find the Add to Cart button and stop the propagation of the click event
+    // This is to prevent the product detail page from opening when Add to Cart is clicked
+    const addToCartBtn = productDiv.querySelector('.addToCartBtn');
+    addToCartBtn.addEventListener('click', (event) => {
+        event.stopPropagation(); // This stops the click from "bubbling" up to the parent div
     });
 
-}  
+    return productDiv;
+}
 
-//function to handle the API request
+function attachAddToCartListeners() {
+    document.querySelectorAll('.addToCartBtn').forEach(button => {
+        button.addEventListener('click', function(event) {
+            const productContainer = event.target.closest('.col4');
+            const productId = productContainer.getAttribute('data-product-id');
+            const quantityInput = productContainer.querySelector('.quantityInput');
+            const quantity = parseInt(quantityInput.value, 10);
+
+            if (!isNaN(quantity) && quantity > 0) {
+                addToCart(productId, quantity);
+            } else {
+                console.error('Invalid quantity:', quantity);
+            }
+        });
+    });
+} 
+
 function addToCart(productId, quantity) {
-    //Retrive the token from local storage
     const authToken = localStorage.getItem('token');
-
     if (!authToken) {
         console.error("User is not logged in");
-
-        //Redirect to login page if user is not logged in
         window.location.href = 'account.html';
-
         return;
     }
-
-    const data = {
-        productId: productId,
-        quantity: quantity
-    };
-
-    console.log('Adding to cart:', data); //console log message
-
+    const data = { productId, quantity };
     fetch('http://localhost:8080/cart/items', {
         method: 'POST',
-        headers:{
+        headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + authToken
         },
         body: JSON.stringify(data),
     })
     .then(response => {
-        if (response.ok) {
-            console.log('Product added to cart'); //console log message
-            //Redirect user to updated shopping cart
-            window.location.href = 'shopping_cart.html';
-        } else {
-            console.error('Failed to add product to cart'); //console log message
+        if (!response.ok) {
+            throw new Error(`Failed to add product to cart: ${response.statusText}`);
+        } 
+        console.log('Product added to cart');
+        window.location.href = 'shopping_cart.html';
+    })
+    .catch(error => { 
+        alert(error.message);
+        console.error('Error:', error);
+    });
+}  
+function fetchAndDisplayProductDetails(productId) { 
+    const authToken = localStorage.getItem('token');
+    if (!authToken) {
+        console.error("User is not logged in");
+        // Handle the case where the user is not logged in
+        return;
+    } 
+
+    fetch(`${backendApi}/${productId}`,{
+        headers: {
+            'Authorization': 'Bearer ' + authToken
         }
     })
-    .catch(error => console.error('Error:', error));
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(product => {
+            updateProductDetailsDOM(product);
+        })
+        .catch(error => { 
+            document.getElementById('product-container').innerHTML = `<p>Error loading product details. Please try again later.</p>`;
+            console.error('Error fetching product details:', error);
+        });
 }
+
+function updateProductDetailsDOM(product) {
+    document.getElementById('productName').textContent = product.name;
+    document.getElementById('productPrice').textContent = `$${product.price.toFixed(2)}`;
+    document.getElementById('productDescription').textContent = product.shortDescription;
+    const productImage = document.querySelector('.single_product .col2 img');
+    if(productImage) {
+        if (product.image && !product.image.startsWith('http')) {
+            productImage.src = `img/${product.image}`;
+        } else {
+            productImage.src = product.image;
+        }
+        productImage.alt = product.name;
+    }
+    const addToCartBtn = document.getElementById('addToCartBtn');
+    if(addToCartBtn) {
+        addToCartBtn.disabled = false; // Enable the button
+        addToCartBtn.addEventListener('click', () => {
+            const quantityInput = document.getElementById('quantityInput');
+            const quantity = parseInt(quantityInput.value, 10);
+            if (!isNaN(quantity) && quantity > 0) {
+                addToCart(product.id, quantity);
+            } else {
+                console.error('Invalid quantity:', quantity);
+            }
+        });
+    }
+}
+
+function updateProductDetailsDOM(product) {
+    // Make sure these elements exist on your product_details.html page
+    const productName = document.getElementById('productName');
+    const productPrice = document.getElementById('productPrice');
+    const productDescription = document.getElementById('productDescription');
+    const productImage = document.getElementById('productImage'); // Make sure you have an element with ID 'productImage'
+    
+    if (productName) productName.textContent = product.name;
+    if (productPrice) productPrice.textContent = `$${product.price.toFixed(2)}`;
+    if (productDescription) productDescription.textContent = product.shortDescription;
+    if (productImage) {
+        productImage.src = product.image.startsWith('http') ? product.image : `img/${product.image}`;
+        productImage.alt = product.name;
+    }
+    const addToCartBtn = document.getElementById('addToCartBtn');
+    if (addToCartBtn) {
+        addToCartBtn.disabled = false;
+        addToCartBtn.addEventListener('click', () => {
+            const quantityInput = document.getElementById('quantityInput');
+            const quantity = parseInt(quantityInput.value, 10);
+            if (!isNaN(quantity) && quantity > 0) {
+                addToCart(product.id, quantity);
+            } else {
+                console.error('Invalid quantity:', quantity);
+            }
+        });
+    }
+} 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const productContainer = document.getElementById('product-container');
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('productId');
+    
+    if (productContainer) {
+        fetchAndDisplayProducts();
+    } else if (productId) {
+        fetchAndDisplayProductDetails(productId);
+    } 
+    
+    const sortSelect = document.getElementById('sort-select');
+    if (sortSelect) {
+        sortSelect.addEventListener('change', fetchAndDisplayProducts);
+    }
+});

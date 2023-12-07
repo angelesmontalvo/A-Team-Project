@@ -11,7 +11,6 @@
     <title> </title>
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="cart.js"></script>
 </head>
 
 <body>
@@ -43,11 +42,10 @@
 
     <!-----------Products----------->
     <div class="smallcontainer">
-
         <!--Sorting Options-->
         <div class="row row2">
             <h2>All Candles</h2>
-            <select id="sort-select" onchange="sortProducts()">
+            <select id="sort-select">
                 <option>Sort by Default</option>
                 <option>Price Low to High</option>
                 <option>Price High to Low</option>
@@ -56,146 +54,7 @@
 
         <!--Row of products-->
         <!--1st Row-->
-        <div class="product-container" id="product-container">
-            <div class="row">
-                <div class="col4" data-product-id="1">
-                    <img src="img/ftpro1.png" width="200px">
-                    <h4>Chamomile</h4>
-                    <p>$2.99</p>
-                    <div class="quantitySection">
-                        <!--Amount to be added to cart-->
-                        <input type="number" class="quantityInput" value="1" min="0" max="99">
-                    </div>
-                    <!--Add to cart button-->
-                    <button class="button addToCartBtn">Add To Cart</button>
-                </div>
-                <div class="col4" data-product-id="2">
-                    <img src="img/ftpro2.png" width="200px">
-                    <h4>Serenity</h4>
-                    <p>$14.99</p>
-                    <div class="quantitySection">
-                        <!--Amount to be added to cart-->
-                        <input type="number" class="quantityInput" value="1" min="0" max="99">
-                    </div>
-                    <!--Add to cart button-->
-                    <button class="button addToCartBtn">Add To Cart</button>
-                </div>
-                <div class="col4" data-product-id="3">
-                    <img src="img/ftpro3.png" width="200px">
-                    <h4>Calm Rose</h4>
-                    <p>$12.99</p>
-                    <div class="quantitySection">
-                        <!--Amount to be added to cart-->
-                        <input type="number" class="quantityInput" value="1" min="0" max="99">
-                    </div>
-                    <!--Add to cart button-->
-                    <button class="button addToCartBtn">Add To Cart</button>
-                </div>
-                <div class="col4" data-product-id="4">
-                    <img src="img/new1.png" width="200px">
-                    <h4>Candy Cane</h4>
-                    <p>$1.99</p>
-                    <div class="quantitySection">
-                        <!--Amount to be added to cart-->
-                        <input type="number" class="quantityInput" value="1" min="0" max="99">
-                    </div>
-                    <!--Add to cart button-->
-                    <button class="button addToCartBtn">Add To Cart</button>
-                </div>
-            </div>
-            <!--2nd Row-->
-            <div class="row">
-                <div class="col4" data-product-id="5">
-                    <img src="img/new2.png" width="200px">
-                    <h4>New Vanilla</h4>
-                    <p>$12.99</p>
-                    <div class="quantitySection">
-                        <!--Amount to be added to cart-->
-                        <input type="number" class="quantityInput" value="1" min="0" max="99">
-                    </div>
-                    <!--Add to cart button-->
-                    <button class="button addToCartBtn">Add To Cart</button>
-                </div>
-                <div class="col4" data-product-id="6">
-                    <img src="img/new3.png" width="200px">
-                    <h4>CranMerry</h4>
-                    <p>$12.99</p>
-                    <div class="quantitySection">
-                        <!--Amount to be added to cart-->
-                        <input type="number" class="quantityInput" value="1" min="0" max="99">
-                    </div>
-                    <!--Add to cart button-->
-                    <button class="button addToCartBtn">Add To Cart</button>
-                </div>
-                <div class="col4" data-product-id="7"> 
-                    <img src="img/new4.png" width="200px">
-                    <h4>Hot Cocoa</h4>
-                    <p>$12.99</p>
-                    <div class="quantitySection">
-                        <!--Amount to be added to cart-->
-                        <input type="number" class="quantityInput" value="1" min="0" max="99">
-                    </div>
-                    <!--Add to cart button-->
-                    <button class="button addToCartBtn">Add To Cart</button>
-                </div>
-                <div class="col4" data-product-id="8">
-                    <img src="img/new5.png" width="200px">
-                    <h4>Winter Forest</h4>
-                    <p>$12.99</p>
-                    <div class="quantitySection">
-                        <!--Amount to be added to cart-->
-                        <input type="number" class="quantityInput" value="1" min="0" max="99">
-                    </div>
-                    <!--Add to cart button-->
-                    <button class="button addToCartBtn">Add To Cart</button>
-                </div>
-            </div>
-            <!--3rd Row-->
-            <div class="row">
-                <div class="col4" data-product-id="9">
-                    <img src="img/new6.png" width="200px">
-                    <h4>Apple Pie</h4>
-                    <p>$12.99</p>
-                    <div class="quantitySection">
-                        <!--Amount to be added to cart-->
-                        <input type="number" class="quantityInput" value="1" min="0" max="99">
-                    </div>
-                    <!--Add to cart button-->
-                    <button class="button addToCartBtn">Add To Cart</button>
-                </div>
-                <div class="col4" data-product-id="10">
-                    <img src="img/new7.png" width="200px">
-                    <h4>Mistletoe</h4>
-                    <p>$12.99</p>
-                    <div class="quantitySection">
-                        <!--Amount to be added to cart-->
-                        <input type="number" class="quantityInput" value="1" min="0" max="99">
-                    </div>
-                    <!--Add to cart button-->
-                    <button class="button addToCartBtn">Add To Cart</button>
-                </div>
-                <div class="col4" data-product-id="11">
-                    <img src="img/new8.png" width="200px">
-                    <h4>Pecan</h4>
-                    <p>$12.99</p>
-                    <div class="quantitySection">
-                        <!--Amount to be added to cart-->
-                        <input type="number" class="quantityInput" value="1" min="0" max="99">
-                    </div>
-                    <!--Add to cart button-->
-                    <button class="button addToCartBtn">Add To Cart</button>
-                </div>
-                <div class="col4" data-product-id="12">
-                    <img src="img/new9.png" width="200px">
-                    <h4>Gingerbread</h4>
-                    <p>$12.99</p>
-                    <div class="quantitySection">
-                        <!--Amount to be added to cart-->
-                        <input type="number" class="quantityInput" value="1" min="0" max="99">
-                    </div>
-                    <!--Add to cart button-->
-                    <button class="button addToCartBtn">Add To Cart</button>
-                </div>
+        <div id="product-container">
             </div>
         </div>
 
@@ -248,6 +107,16 @@
         </div>
     </div>
     <!-----------END of footer----------->
-    <script src="product.js"></script>
+    <script src="product.js"></script> 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sortSelect = document.getElementById('sort-select');
+            sortSelect.addEventListener('change', function() {
+                // Call the sortProducts function when the sort option changes
+                // Implemented the sortProducts function in product.js file
+                sortProducts();
+            });
+        });
+    </script> 
 </body>
 </html>

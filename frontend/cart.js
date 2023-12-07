@@ -1,3 +1,7 @@
+document.addEventListener('DOMContentLoaded', function() {
+    fetchCart();
+}); 
+
 function fetchCart() {
     console.log('Fetching cart...');
 
@@ -12,52 +16,123 @@ function fetchCart() {
     }
 
     // Make a request to the server to get the cart items
-    fetch('http://localhost:8080/cart/items', {
+    fetch('http://localhost:8080/cart', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + authToken
         },
+    }) 
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
     })
-
-    .then(response => response.json())
-    .then(cartItems => {
-        // Update the UI with the cart items
-        displayCartItems(cartItems);
+    .then(cartDto => { // Assuming the response will be a CartDto
+        console.log(cartDto);
+        displayCartItems(cartDto.cartItems); // Assuming cartItems is a field in CartDto
     })
     .catch(error => console.error('Error:', error));
 }
-  
-    
-// Function to display cart items on the shopping cart page
-function displayCartItems(cartItems) {
-    const cartTable = document.getElementById('cart-table');
-    const totalSubtotalElement = document.getElementById('total_subtotal');
-    let totalSubtotal = 0;
+function updateCartItem(itemId, newQuantity) {
+    const authToken = localStorage.getItem('token');
+    if (!authToken) {
+        console.error("User is not logged in");
+        window.location.href = 'account.html';
+        return;
+    }
 
-    // Clear existing cart items
-    cartTable.innerHTML = '';
+    fetch(`http://localhost:8080/cart/items/${itemId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + authToken
+        },
+        body: JSON.stringify({ quantity: newQuantity })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        fetchCart(); // Refresh the cart to reflect the update
+    })
+    .catch(error => console.error('Error:', error));
+} 
 
-    // Iterate through cart items and display them in the table
-    cartItems.forEach(item => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${item.productName}</td>
-            <td>${item.quantity}</td>
-            <td>${item.subtotal.toFixed(2)}</td>
-        `;
-        cartTable.appendChild(row);
+function removeItemFromCart(itemId) {
+    const authToken = localStorage.getItem('token');
+    if (!authToken) {
+        console.error("User is not logged in");
+        window.location.href = 'account.html';
+        return;
+    }
 
-        // Update the total subtotal
-        totalSubtotal += item.subtotal;
-    });
-
-    // Display the total subtotal
-    totalSubtotalElement.textContent = totalSubtotal.toFixed(2);
+    fetch(`http://localhost:8080/cart/items/${itemId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + authToken
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        fetchCart(); // Refresh the cart to reflect the item removal
+    })
+    .catch(error => console.error('Error:', error));
 }
 
-// Call fetchCart when the shopping_cart.html page is loaded
-document.addEventListener('DOMContentLoaded', function () {
-    fetchCart();
-});
 
+// Function to display cart items on the shopping cart page
+function displayCartItems(cartItems) {
+    const cartTable = document.getElementById('cart-table-body'); 
+    const totalSubtotalElement = document.getElementById('total_subtotal');
+    if (!cartTable || !totalSubtotalElement) {
+        console.error("Required HTML elements not found");
+        return;
+    } 
+
+    cartTable.innerHTML = '';
+    let totalSubtotal = 0; 
+
+    // Iterate through cart items and display them in the table
+    if (cartItems && cartItems.length > 0) {
+        cartItems.forEach(item => {
+            const row = cartTable.insertRow();
+            row.insertCell().textContent = item.productName; // Make sure your item object has a 'productName' property
+            
+            const quantityCell = row.insertCell();
+            const quantityInput = document.createElement('input');
+            quantityInput.type = 'number';
+            quantityInput.value = item.quantity;
+            quantityInput.min = '1';
+            quantityInput.addEventListener('change', (e) => {
+                updateCartItem(item.productId, e.target.value);
+            });
+            quantityCell.appendChild(quantityInput);
+
+            // Subtotal
+            row.insertCell().textContent = `$${item.subtotal.toFixed(2)}`;
+            
+            // Remove button
+            const removeCell = row.insertCell();
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Remove';
+            removeButton.addEventListener('click', () => {
+                removeItemFromCart(item.productId);
+            });
+            removeCell.appendChild(removeButton);
+
+            totalSubtotal += item.subtotal;
+        });
+
+        // Display the total subtotal
+    } else {
+        cartTable.innerHTML = '<tr><td colspan="3">No items in cart</td></tr>';
+    } 
+
+    totalSubtotalElement.textContent = `$${totalSubtotal.toFixed(2)}`;
+
+} 
