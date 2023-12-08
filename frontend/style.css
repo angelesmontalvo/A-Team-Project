@@ -260,6 +260,12 @@ ul {
 
 /*-----------Products page-----------*/
 
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Adjust as needed */
+}
+
 .col4 {
     flex-basis: 25%;
     padding: 15px;
@@ -429,9 +435,13 @@ input:focus {
     line-height: 40px;
 }
 
+.col2 button {
+    border: none;
+}
+
 /*-----------Shopping Cart-----------*/
 
-.cart_page {
+.cart-page {
     margin: 80px auto;
 }
 
