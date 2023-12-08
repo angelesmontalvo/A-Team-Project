@@ -145,6 +145,8 @@ function displayCartItems(cartItems) {
         //Store totalSubtotal in local storage
         localStorage.setItem('totalSubtotal',totalSubtotal.toFixed(2));
     } else {
+        // No items in the cart, set totalSubtotal to zero
+        totalSubtotalElement.textContent = '$0.00';
         cartTable.innerHTML = '<tr><td colspan="3">No items in cart</td></tr>';
     } 
 } 
