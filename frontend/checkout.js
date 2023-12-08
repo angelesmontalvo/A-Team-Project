@@ -8,13 +8,19 @@
 document.addEventListener('DOMContentLoaded', function () {
     //Declaration of variables obtained from account.html by Id
     var shippingMethodInput = document.getElementsByName('shipping-method');
-    const totalSubtotal = localStorage.getItem('totalSubtotal') || '0.00';
+    var subtotalElement = document.getElementById('subtotal');
     var shippingElement =  document.getElementById('shipping');
     var taxElement = document.getElementById('tax');
     var totalElement = document.getElementById('total');
 
+    //Retrive the totalSubtotal from local storage
+    var totalSubtotal = parseFloat(localStorage.getItem('totalSubtotal')) || 0;
+
     //Check that we retrived the totalsubtotal correclty
     console.log('Total Subtotal:', totalSubtotal);
+    
+    //update subtotal in html
+    subtotalElement.textContent = totalSubtotal.toFixed(2);
     
     //Event listener for changes in the shipping method selected
     for (var i = 0; i < shippingMethodInput.length; i++) {
