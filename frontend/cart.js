@@ -101,6 +101,17 @@ function displayCartItems(cartItems) {
     if (cartItems && cartItems.length > 0) {
         cartItems.forEach(item => {
             const row = cartTable.insertRow();
+
+            //product image
+            const imageCell = row.insertCell();
+            const productImage = document.createElement('img');
+            productImage.src = 'img' + item.productImageUrl;
+            productImage.alt = item.productName;
+            productImage.style.width = '100px';
+            productImage.style.height = 'auto';
+            imageCell.appendChild(productImage);
+
+
             row.insertCell().textContent = item.productName; // Make sure your item object has a 'productName' property
             
             const quantityCell = row.insertCell();
@@ -109,7 +120,7 @@ function displayCartItems(cartItems) {
             quantityInput.value = item.quantity;
             quantityInput.min = '1';
             quantityInput.addEventListener('change', (e) => {
-                updateCartItem(item.productId, e.target.value);
+                updateCartItem(item.id, parseInt(e.target.value, 10));
             });
             quantityCell.appendChild(quantityInput);
 
@@ -121,7 +132,7 @@ function displayCartItems(cartItems) {
             const removeButton = document.createElement('button');
             removeButton.textContent = 'Remove';
             removeButton.addEventListener('click', () => {
-                removeItemFromCart(item.productId);
+                removeItemFromCart(item.id);
             });
             removeCell.appendChild(removeButton);
 
