@@ -7,36 +7,23 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     //Declaration of variables obtained from account.html by Id
-    var shippingMethodInput = document.getElementsByName('shipping-method');
     var subtotalElement = document.getElementById('subtotal');
     var shippingElement =  document.getElementById('shipping');
     var taxElement = document.getElementById('tax');
     var totalElement = document.getElementById('total');
 
     //Retrive the totalSubtotal from local storage
-    var totalSubtotal = parseFloat(localStorage.getItem('totalSubtotal')) || 0;
-
-    //Check that we retrived the totalsubtotal correclty
-    console.log('Total Subtotal:', totalSubtotal);
-    
-    //update subtotal in html
-    subtotalElement.textContent = totalSubtotal.toFixed(2);
-    
-    //Event listener for changes in the shipping method selected
-    for (var i = 0; i < shippingMethodInput.length; i++) {
-        shippingMethodInput[i].addEventListener('change', function (){
-            //Update the total based on the selected shipping method
-            updateOrderSummary();
-        });
-    }
+    updateOrderSummary(); 
 
     //'updateOrderSummary()': updates the taxes, shipping fees, and total
     function updateOrderSummary() {
         //Value as numbers
-        var subtotalValue = parseFloat(totalSubtotal.textContent) || 0;
-        var shippingCost = 0;
+        var storedSubtotal = localStorage.getItem('totalSubtotal') || 0;
+        var subtotalValue = parseFloat(storedSubtotal) || 0;
+        subtotalElement.textContent = subtotalValue.toFixed(2);
 
         //Get the shipping method selected by the user
+        var shippingCost = 0;
         var shippingMethodSelected = document.querySelector('input[name="shipping-method"]:checked').value;
 
         //Update shipping cost to $10 if the user selects 'Express' shipping
@@ -54,17 +41,19 @@ document.addEventListener('DOMContentLoaded', function () {
         shippingElement.textContent = '$' + shippingCost.toFixed(2);
         taxElement.textContent = '$' + tax.toFixed(2);
         totalElement.textContent = '$' + total.toFixed(2);
-    }
+    } 
 
-    //Initialize the order summary
-    updateOrderSummary();
+    var shippingMethodInput = document.getElementsByName('shipping-method');
+    for (var i = 0; i < shippingMethodInput.length; i++) {
+        shippingMethodInput[i].addEventListener('change', function() {
+            updateOrderSummary();
+        });
+
+    }
 
 });
 
 //This one stores the user's email in localStorage
 document.addEventListener('DOMContentLoaded', function () {
-    var emailInput = document.querySelector('input[type="email"]');
-    emailInput.addEventListener('input', function () {
-        localStorage.setItem('userEmail', emailInput.value);
-    });
+   
 });
