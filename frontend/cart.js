@@ -129,10 +129,11 @@ function displayCartItems(cartItems) {
         });
 
         // Display the total subtotal
+        totalSubtotalElement.textContent = `$${totalSubtotal.toFixed(2)}`;
+
+        //Store totalSubtotal in local storage
+        localStorage.setItem('totalSubtotal',totalSubtotal.toFixed(2));
     } else {
         cartTable.innerHTML = '<tr><td colspan="3">No items in cart</td></tr>';
     } 
-
-    totalSubtotalElement.textContent = `$${totalSubtotal.toFixed(2)}`;
-
 } 

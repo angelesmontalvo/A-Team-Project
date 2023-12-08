@@ -45,8 +45,13 @@ function createProductElement(product) {
     const productDiv = document.createElement('div');
     productDiv.className = 'col4';
     productDiv.setAttribute('data-product-id', product.id);
-    productDiv.addEventListener('click', () => {
-        window.location.href = `product_details.html?productId=${product.id}`;
+    productDiv.addEventListener('click', (event) => {
+        //If the click occurred on the quantity input or its children
+        const isQuantityInput = event.target.closest('.quantitySection');
+        if (!isQuantityInput) {
+            //Redirect only if the click did not occur on the quantity input
+            window.location.href = `product_details.html?productId=${product.id}`;
+        }
     });
 
     // Setting the innerHTML of the product div

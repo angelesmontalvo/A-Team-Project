@@ -8,11 +8,14 @@
 document.addEventListener('DOMContentLoaded', function () {
     //Declaration of variables obtained from account.html by Id
     var shippingMethodInput = document.getElementsByName('shipping-method');
-    var subtotalElement = document.getElementById('subtotal');
+    const totalSubtotal = localStorage.getItem('totalSubtotal') || '0.00';
     var shippingElement =  document.getElementById('shipping');
     var taxElement = document.getElementById('tax');
     var totalElement = document.getElementById('total');
 
+    //Check that we retrived the totalsubtotal correclty
+    console.log('Total Subtotal:', totalSubtotal);
+    
     //Event listener for changes in the shipping method selected
     for (var i = 0; i < shippingMethodInput.length; i++) {
         shippingMethodInput[i].addEventListener('change', function (){
@@ -24,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
     //'updateOrderSummary()': updates the taxes, shipping fees, and total
     function updateOrderSummary() {
         //Value as numbers
-        var subtotalValue = parseFloat(subtotalElement.textContent) || 0;
+        var subtotalValue = parseFloat(totalSubtotal.textContent) || 0;
         var shippingCost = 0;
 
         //Get the shipping method selected by the user
