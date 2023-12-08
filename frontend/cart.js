@@ -105,7 +105,7 @@ function displayCartItems(cartItems) {
             //product image
             const imageCell = row.insertCell();
             const productImage = document.createElement('img');
-            productImage.src = 'img' + item.productImageUrl;
+            productImage.src = 'img/' + item.productImageUrl;
             productImage.alt = item.productName;
             productImage.style.width = '100px';
             productImage.style.height = 'auto';
